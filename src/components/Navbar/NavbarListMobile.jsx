@@ -1,9 +1,9 @@
 import NavbarListItem from './NavbarListItem';
 
-const NavbarList = () => {
+const NavbarListMobile = ({ menu }) => {
   return (
-    <nav className="hidden lg:block">
-      <ul className="flex gap-5">
+    <nav className={menu ? 'block' : 'hidden'}>
+      <ul className="flex flex-col items-center gap-14 py-24 text-3xl">
         <NavbarListItem
           anchor="#"
           text="Inicio"
@@ -41,4 +41,4 @@ const NavbarList = () => {
   );
 };
 
-export default NavbarList;
+export default NavbarListMobile;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import ButtonCta from '../Buttons/ButtonCta';
 import Navbar from '../Navbar/Navbar';
-import NavbarList from '../Navbar/NavbarList';
+import NavbarListMobile from '../Navbar/NavbarListMobile';
 import HeroText from './HeroText';
 
 const Hero = () => {
@@ -18,17 +18,19 @@ const Hero = () => {
       </div>
       <div className="absolute z-10 h-full w-full bg-dark-900 opacity-70"></div>
       <div className="relative z-20">
-        <NavbarList menu={menu} />
+        <NavbarListMobile menu={menu} />
       </div>
       <div
         className={`relative z-20 flex h-full flex-col gap-2 p-5 pt-32 ${
           menu && 'hidden'
         }`}
       >
-        <HeroText
-          title="Las mejores ofertas en productos electrónicos"
-          subTitle="La tienda con mas ofertas en Chile en productos electrónicos"
-        />
+        <div className="mb-5">
+          <HeroText
+            title="Las mejores ofertas en productos electrónicos"
+            subTitle="La tienda con mas ofertas en Chile en productos electrónicos"
+          />
+        </div>
         <ButtonCta text="Registrate" />
       </div>
     </div>
