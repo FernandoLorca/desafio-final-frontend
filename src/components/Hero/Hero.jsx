@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import ButtonCta from './ButtonCta';
-import Navbar from './Navbar';
-import NavbarList from './NavbarList';
+import ButtonCta from '../Buttons/ButtonCta';
+import Navbar from '../Navbar/Navbar';
+import NavbarList from '../Navbar/NavbarList';
 import HeroText from './HeroText';
 
 const Hero = () => {
