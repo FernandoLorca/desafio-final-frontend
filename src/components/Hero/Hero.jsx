@@ -21,7 +21,7 @@ const Hero = () => {
         <NavbarListMobile menu={menu} />
       </div>
       <div
-        className={`relative z-20 flex h-full flex-col gap-2 px-5 pt-32 ${
+        className={`relative z-20 flex h-full flex-col gap-2 px-5 pt-32 lg:pt-48 ${
           menu && 'hidden'
         }`}
       >
