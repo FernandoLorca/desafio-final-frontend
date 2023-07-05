@@ -11,7 +11,10 @@ const Hero = () => {
   return (
     <div className="relative h-screen bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat text-dark-100">
       <div className="absolute z-30 w-full">
-        <Navbar onClick={() => setMenu(!menu)} />
+        <Navbar
+          onClick={() => setMenu(!menu)}
+          menu={menu}
+        />
       </div>
       <div className="absolute z-10 h-full w-full bg-dark-900 opacity-70"></div>
       <div className="relative z-20">

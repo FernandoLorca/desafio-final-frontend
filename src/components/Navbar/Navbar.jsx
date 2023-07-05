@@ -1,15 +1,24 @@
-import { BsList } from 'react-icons/bs';
+import { BsList, BsXLg } from 'react-icons/bs';
 
-const Navbar = ({ onClick }) => {
+const Navbar = ({ onClick, menu }) => {
   return (
     <div className="flex items-center justify-between px-5 py-2 ">
       <img
         src="/logo.svg"
-        alt=""
+        alt="Logo"
         className="w-16"
       />
       <button onClick={onClick}>
-        <BsList className="h-10 max-h-full w-10 max-w-full" />
+        <BsList
+          className={`h-10 max-h-full w-10 max-w-full ${
+            !menu ? 'block' : 'hidden'
+          }`}
+        />
+        <BsXLg
+          className={`h-10 max-h-full w-10 max-w-full ${
+            menu ? 'block' : 'hidden'
+          }`}
+        />
       </button>
     </div>
   );
