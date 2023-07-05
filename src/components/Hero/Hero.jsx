@@ -10,7 +10,7 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat text-dark-100">
-      <div className="absolute z-30 w-full">
+      <div className="absolute z-30 w-full px-5 py-2 md:py-3">
         <Navbar
           onClick={() => setMenu(!menu)}
           menu={menu}
@@ -21,7 +21,7 @@ const Hero = () => {
         <NavbarListMobile menu={menu} />
       </div>
       <div
-        className={`relative z-20 flex h-full flex-col gap-2 p-5 pt-32 ${
+        className={`relative z-20 flex h-full flex-col gap-2 px-5 pt-32 ${
           menu && 'hidden'
         }`}
       >

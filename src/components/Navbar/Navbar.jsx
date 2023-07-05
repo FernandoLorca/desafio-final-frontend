@@ -6,11 +6,11 @@ import ButtonCta from '../Buttons/ButtonCta';
 
 const Navbar = ({ onClick, menu }) => {
   return (
-    <div className="flex items-center justify-between px-5 py-2 ">
+    <div className="flex items-center justify-between">
       <img
         src="/logo.svg"
         alt="Logo"
-        className="w-16"
+        className="w-16 md:w-10"
       />
       <div className="flex items-center gap-5">
         <NavbarList />
