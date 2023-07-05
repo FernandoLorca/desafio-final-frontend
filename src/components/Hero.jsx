@@ -1,3 +1,5 @@
+import ButtonCta from './ButtonCta';
+
 const Hero = () => {
   return (
     <div className="repeat relative h-screen bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat text-dark-100">
@@ -9,9 +11,7 @@ const Hero = () => {
         <p className="mb-5 text-3xl">
           La tienda con mas ofertas en Chile en productos electrónicos
         </p>
-        <button className="rounded-full bg-gradient-to-br from-primary-600 to-secondary-700 px-5 py-4 ">
-          Registrate
-        </button>
+        <ButtonCta text="Registrate" />
       </div>
     </div>
   );
