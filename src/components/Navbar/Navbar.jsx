@@ -6,7 +6,7 @@ import ButtonCta from '../Buttons/ButtonCta';
 
 const Navbar = ({ onClick, menu }) => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between md:px-16">
       <img
         src="/logo.svg"
         alt="Logo"
