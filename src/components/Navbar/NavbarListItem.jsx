@@ -1,6 +1,6 @@
-const NavbarListItem = ({ text, anchor }) => {
+const NavbarListItem = ({ text, textSize, anchor }) => {
   return (
-    <li>
+    <li className={`flex items-center ${textSize}`}>
       <a
         className="hover:underline"
         href={anchor}

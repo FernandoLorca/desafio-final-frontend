@@ -14,7 +14,7 @@ const Navbar = ({ onClick, menu }) => {
       />
       <div className="flex items-center gap-5">
         <NavbarList />
-        <div className="flex gap-2">
+        <div className="hidden gap-2 lg:flex">
           <ButtonPassive text="Entrar" />
           <ButtonCta
             text="Registrate"
