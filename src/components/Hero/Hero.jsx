@@ -31,7 +31,10 @@ const Hero = () => {
             subTitle="La tienda con mas ofertas en Chile en productos electrónicos"
           />
         </div>
-        <ButtonCta text="Registrate" />
+        <ButtonCta
+          text="Registrate"
+          textSize="text-lg"
+        />
       </div>
     </div>
   );

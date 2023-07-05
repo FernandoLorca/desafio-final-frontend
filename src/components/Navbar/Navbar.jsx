@@ -1,6 +1,8 @@
 import { BsList, BsXLg } from 'react-icons/bs';
 
 import NavbarList from './NavbarList';
+import ButtonPassive from '../Buttons/ButtonPassive';
+import ButtonCta from '../Buttons/ButtonCta';
 
 const Navbar = ({ onClick, menu }) => {
   return (
@@ -10,8 +12,15 @@ const Navbar = ({ onClick, menu }) => {
         alt="Logo"
         className="w-16"
       />
-      <div>
+      <div className="flex items-center gap-5">
         <NavbarList />
+        <div className="flex gap-2">
+          <ButtonPassive text="Entrar" />
+          <ButtonCta
+            text="Registrate"
+            textSize="text-xs"
+          />
+        </div>
       </div>
       <button
         className="lg:hidden"
