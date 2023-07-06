@@ -1,5 +1,6 @@
-import ProductPrice from './ProductPrice';
 import ProductTitle from './ProductTitle';
+import ProductPrice from './ProductPrice';
+import Link from '../Buttons/Link';
 
 const Product = ({ img, productTitle, price }) => {
   return (
@@ -13,12 +14,11 @@ const Product = ({ img, productTitle, price }) => {
       </div>
       <ProductTitle productTitle={productTitle} />
       <ProductPrice price={price} />
-      <a
+      <Link
+        text="Detalles"
         href="#"
-        className="text-lg underline hover:text-primary-500"
-      >
-        Detalles
-      </a>
+        fontSize="text-lg"
+      />
     </div>
   );
 };

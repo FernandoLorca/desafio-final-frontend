@@ -6,12 +6,16 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import Product from './Product';
+import TitleTwo from '../Titles.jsx/TitleTwo';
 
 const Products = ({ title }) => {
   return (
     <div className="pt-10">
       <div className="px-5 md:px-20 lg:hidden">
-        <h2 className="mb-5 text-4xl font-bold lg:px-20">{title}</h2>
+        <TitleTwo
+          title={title}
+          textSize="text-4xl"
+        />
         <Swiper
           slidesPerView={2}
           spaceBetween={20}
