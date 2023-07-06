@@ -1,3 +1,6 @@
+import ProductPrice from './ProductPrice';
+import ProductTitle from './ProductTitle';
+
 const Product = ({ img, productTitle, price }) => {
   return (
     <>
@@ -9,8 +12,8 @@ const Product = ({ img, productTitle, price }) => {
         />
       </div>
       <div className="px-2">
-        <h3 className="text-xl font-bold">{productTitle}</h3>
-        <p className="mb-2 text-lg">{price}</p>
+        <ProductTitle productTitle={productTitle} />
+        <ProductPrice price={price} />
         <a
           href="#"
           className="text-lg underline hover:text-primary-500"

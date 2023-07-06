@@ -15,7 +15,7 @@ const Categories = () => {
             bgConfig="bg-[url('/categories/ram.webp')] bg-repeat bg-center bg-cover"
           />
           <Categorie
-            title="Almacenamiento"
+            title="Ssd y Hdd"
             bgConfig="bg-[url('/categories/ssd.webp')] bg-repeat bg-center bg-cover"
           />
           <Categorie
