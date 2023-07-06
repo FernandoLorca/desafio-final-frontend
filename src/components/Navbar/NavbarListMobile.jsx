@@ -31,7 +31,7 @@ const NavbarListMobile = ({ menu }) => {
         <NavbarListItem
           textSize="text-3xl"
           anchor="#"
-          text="Alacenamiento"
+          text="Ssd y Hdd"
         />
         <NavbarListItem
           textSize="text-3xl"

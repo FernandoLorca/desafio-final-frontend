@@ -22,7 +22,7 @@ const NavbarList = () => {
         <NavbarListItem
           textSize="text-sm"
           anchor="#"
-          text="Alacenamiento"
+          text="Ssd y Hdd"
         />
         <NavbarListItem
           textSize="text-sm"
