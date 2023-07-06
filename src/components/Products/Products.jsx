@@ -1,35 +1,41 @@
-const Products = ({ title }) => {
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+
+const Products = () => {
   return (
-    <div className="flex justify-center">
-      <div className="px-5 py-10 lg:w-full lg:max-w-[84.3rem]">
-        <h2 className="mb-5 text-4xl font-bold md:px-20">{title}</h2>
-        <div className="flex h-[10rem] gap-5 md:px-20 lg:flex lg:h-32">
-          <div
-            className={`relative h-full w-full rounded-xl bg-dark-200 bg-[url('/categories/mother.webp')] bg-cover bg-center bg-repeat lg:cursor-pointer lg:transition lg:hover:scale-105`}
-          >
-            <div className="absolute z-10 h-full w-full rounded-xl bg-dark-950 opacity-50"></div>
-            <h3 className="relative z-20 flex h-full items-center justify-center px-2 text-2xl font-bold text-dark-100 md:text-base">
-              Placas madre
-            </h3>
+    <div className="px-5">
+      <h2 className="mb-5 text-4xl font-bold md:px-20">Categorias</h2>
+      <Swiper
+        slidesPerView={2}
+        spaceBetween={20}
+        freeMode={true}
+        pagination={false}
+        modules={[FreeMode]}
+      >
+        <SwiperSlide>
+          <div className="mb-2 rounded-xl bg-dark-200">
+            <img
+              src="/categories/video.webp"
+              alt=""
+              className="rounded-xl"
+            />
           </div>
-          <div
-            className={`relative h-full w-full rounded-xl bg-dark-200 bg-[url('/categories/mother.webp')] bg-cover bg-center bg-repeat lg:cursor-pointer lg:transition lg:hover:scale-105`}
-          >
-            <div className="absolute z-10 h-full w-full rounded-xl bg-dark-950 opacity-50"></div>
-            <h3 className="relative z-20 flex h-full items-center justify-center px-2 text-2xl font-bold text-dark-100 md:text-base">
-              Placas madre
-            </h3>
+          <div className="px-2">
+            <h3 className="text-2xl font-bold">Rtx 3080</h3>
+            <p className="mb-3 text-lg">$699.900</p>
+            <a
+              href="#"
+              className="underline"
+            >
+              Detalles
+            </a>
           </div>
-          <div
-            className={`relative h-full w-full rounded-xl bg-dark-200 bg-[url('/categories/mother.webp')] bg-cover bg-center bg-repeat lg:cursor-pointer lg:transition lg:hover:scale-105`}
-          >
-            <div className="absolute z-10 h-full w-full rounded-xl bg-dark-950 opacity-50"></div>
-            <h3 className="relative z-20 flex h-full items-center justify-center px-2 text-2xl font-bold text-dark-100 md:text-base">
-              Placas madre
-            </h3>
-          </div>
-        </div>
-      </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };

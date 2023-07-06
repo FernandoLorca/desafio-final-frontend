@@ -7,7 +7,7 @@ const App = () => {
     <div className="text-dark-800">
       <Hero />
       <Categories />
-      <Products title="Tarjetas de video" />|{' '}
+      <Products title="Tarjetas de video" />
     </div>
   );
 };
