@@ -1,7 +1,7 @@
 import Hero from './components/Hero/Hero';
 import Categories from './components/Categories/Categories';
 import Products from './components/Products/Products';
-
+//prueba
 const App = () => {
   return (
     <div className="text-dark-800">
