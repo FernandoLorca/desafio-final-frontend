@@ -10,10 +10,10 @@ import ButtonCta from '../Buttons/ButtonCta';
 const Footer = () => {
   return (
     <div className="mt-10 flex flex-col items-center bg-gradient-to-b from-primary-800 to-primary-900 px-5 text-dark-100">
-      <div className="py-10">
+      <div className="py-10 lg:py-5">
         <Logo
-          logoSize="max-w-[4rem]"
-          fontSize="text-2xl"
+          logoSize="max-w-[4rem] lg:max-w-[3rem]"
+          fontSize="text-2xl lg:text-xl"
         />
       </div>
       <div className="pb-5 text-center">
@@ -66,7 +66,7 @@ const Footer = () => {
           fontSize="text-sm"
         />
       </div>
-      <div className="flex justify-center gap-7 pb-5 pt-10">
+      <div className="flex justify-center gap-7 pb-5 pt-10 lg:pt-5">
         <Rrss icon={<BsInstagram />} />
         <Rrss icon={<BsFacebook />} />
         <Rrss icon={<BsTwitter />} />

@@ -4,7 +4,7 @@ const Logo = ({ logoSize, fontSize }) => {
       <div className={`w-full ${logoSize}`}>
         <img
           src="/logo.svg"
-          alt=""
+          alt="Logo tienda online"
         />
       </div>
       <p className={`font-bold text-dark-100 ${fontSize}`}>Tienda Digital</p>
