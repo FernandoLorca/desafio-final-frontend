@@ -8,6 +8,8 @@ const App = () => {
       <Hero />
       <Categories />
       <Products title="Tarjetas de video" />
+      <Products title="Ssd y Hdd" />
+      <Products title="Procesadores" />
     </div>
   );
 };
