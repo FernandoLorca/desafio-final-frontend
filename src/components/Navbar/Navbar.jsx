@@ -12,17 +12,15 @@ const Navbar = ({ onClick, menu }) => {
         alt="Logo"
         className="w-16 md:w-10"
       />
-      <div className="flex items-center gap-5">
-        <NavbarList />
-        <div className="hidden gap-2 lg:flex">
-          <ButtonPassive text="Entrar" />
-          <ButtonCta
-            text="Registrate"
-            textSize="text-xs"
-          />
-        </div>
+      <NavbarList />
+      <div className="hidden gap-2 lg:flex">
+        <ButtonPassive text="Entrar" />
+        <ButtonCta
+          text="Registrate"
+          textSize="text-xs"
+        />
       </div>
-      <button
+      <div
         className="lg:hidden"
         onClick={onClick}
       >
@@ -36,7 +34,7 @@ const Navbar = ({ onClick, menu }) => {
             menu ? 'block' : 'hidden'
           }`}
         />
-      </button>
+      </div>
     </div>
   );
 };

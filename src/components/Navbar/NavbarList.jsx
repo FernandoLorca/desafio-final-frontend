@@ -2,7 +2,7 @@ import NavbarListItem from './NavbarListItem';
 
 const NavbarList = () => {
   return (
-    <nav className="hidden lg:block">
+    <nav className="hidden px-5 lg:block">
       <ul className="text flex gap-5">
         <NavbarListItem
           textSize="text-sm"
