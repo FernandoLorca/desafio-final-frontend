@@ -29,6 +29,7 @@ const Login = () => {
           <ButtonCta
             text="Ingresar"
             textSize="text-dark-100"
+            type="submit"
           />
         </form>
       </div>
