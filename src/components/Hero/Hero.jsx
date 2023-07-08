@@ -21,7 +21,7 @@ const Hero = () => {
         <NavbarListMobile menu={menu} />
       </div>
       <div
-        className={`relative z-20 flex h-full flex-col gap-2 px-5 pt-32 md:px-20 lg:max-w-[60rem] lg:pl-60 lg:pt-48 xl:max-w-[70rem] xl:pl-80 ${
+        className={`relative z-20 flex h-full flex-col gap-2 px-5 pt-32 md:px-20 lg:max-w-[60rem] lg:pl-60 lg:pt-48 xl:max-w-[70rem] xl:items-center ${
           menu && 'hidden'
         }`}
       >
@@ -31,10 +31,12 @@ const Hero = () => {
             subTitle="La tienda con mas ofertas en Chile en productos electrónicos"
           />
         </div>
-        <ButtonCta
-          text="Registrate"
-          textSize="text-lg"
-        />
+        <div className="block w-full">
+          <ButtonCta
+            text="Registrate"
+            textSize="text-lg"
+          />
+        </div>
       </div>
     </div>
   );
