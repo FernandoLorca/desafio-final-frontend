@@ -5,11 +5,18 @@ import Navbar from '../Navbar/Navbar';
 import NavbarListMobile from '../Navbar/NavbarListMobile';
 import HeroText from './HeroText';
 
-const Hero = () => {
+const Hero = ({
+  heroBackground,
+  heroTitle,
+  heroSubTitle,
+  displayButton = 'block',
+}) => {
   const [menu, setMenu] = useState(false);
 
   return (
-    <div className="relative h-screen bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat text-dark-100">
+    <div
+      className={`relative h-screen bg-cover bg-center bg-no-repeat text-dark-100 ${heroBackground}`}
+    >
       <div className="absolute z-30 w-full px-5 py-2 md:py-3">
         <Navbar
           onClick={() => setMenu(!menu)}
@@ -27,14 +34,14 @@ const Hero = () => {
       >
         <div className="mb-5">
           <HeroText
-            title="Las mejores ofertas en productos electrónicos"
-            subTitle="La tienda con mas ofertas en Chile en productos electrónicos"
+            title={heroTitle}
+            subTitle={heroSubTitle}
           />
         </div>
         <div className="block w-full">
           <ButtonCta
             text="Registrate"
-            textSize="text-lg"
+            textSize={`text-lg ${displayButton}`}
           />
         </div>
       </div>
