@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import HomePublic from './pages/HomePublic';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -9,6 +10,10 @@ const App = () => {
       <Route
         path="/"
         element={<HomePublic />}
+      />
+      <Route
+        path="/login"
+        element={<Login />}
       />
       <Route
         path="*"
