@@ -14,10 +14,13 @@ const Navbar = ({ onClick, menu }) => {
       />
       <NavbarList />
       <div className="hidden gap-2 lg:flex">
-        <ButtonPassive text="Entrar" />
+        <ButtonPassive
+          text="Entrar"
+          classProperty="text-sm"
+        />
         <ButtonCta
           text="Registrate"
-          textSize="text-xs"
+          textSize="text-sm"
         />
       </div>
       <div
