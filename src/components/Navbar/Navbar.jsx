@@ -20,7 +20,7 @@ const Navbar = ({ onClick, menu }) => {
         />
         <ButtonCta
           text="Registrate"
-          textSize="text-xs"
+          textSize="text-sm"
         />
       </div>
       <div
