@@ -18,10 +18,13 @@ const Footer = () => {
       </div>
       <div className="pb-5 text-center">
         <div className="flex justify-center gap-5 py-5 md:gap-3">
-          <ButtonPassive text="Entrar" />
+          <ButtonPassive
+            text="Entrar"
+            classProperty="text-md"
+          />
           <ButtonCta
             text="Registrarse"
-            textSize="text-sm"
+            textSize="text-md"
           />
         </div>
       </div>
