@@ -4,21 +4,21 @@ import HomePublic from './pages/HomePublic';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 
+import InputProvider from './context/InputContext.jsx';
+
 const App = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<HomePublic />}
-      />
+      <Route path="/" element={<HomePublic />} />
       <Route
         path="/login"
-        element={<Login />}
+        element={
+          <InputProvider>
+            <Login />
+          </InputProvider>
+        }
       />
-      <Route
-        path="*"
-        element={<NotFound />}
-      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
