@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom';
+
 const NavbarListItem = ({ text, textSize, anchor }) => {
   return (
     <li className={`flex items-center ${textSize}`}>
-      <a
+      <Link
         className="hover:underline"
-        href={anchor}
+        to={anchor}
       >
         {text}
-      </a>
+      </Link>
     </li>
   );
 };

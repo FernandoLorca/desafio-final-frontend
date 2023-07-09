@@ -1,7 +1,6 @@
 import { BsInstagram, BsFacebook, BsTwitter } from 'react-icons/bs';
 
 import Logo from '../Logo';
-import TitleTwo from '../Titles.jsx/TitleTwo';
 import Link from '../Buttons/Link';
 import Rrss from '../RRSS';
 import ButtonPassive from '../Buttons/ButtonPassive';
@@ -21,6 +20,7 @@ const Footer = () => {
           <ButtonPassive
             text="Entrar"
             classProperty="text-md"
+            toHref="/login"
           />
           <ButtonCta
             text="Registrarse"
@@ -28,10 +28,6 @@ const Footer = () => {
           />
         </div>
       </div>
-      <TitleTwo
-        title="Categorías"
-        textSize="text-4xl text-center"
-      />
       <div className="flex flex-col gap-5 text-center md:flex-row">
         <Link
           text="Placas madre"

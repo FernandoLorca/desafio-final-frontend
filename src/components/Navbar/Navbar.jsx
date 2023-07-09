@@ -16,7 +16,7 @@ const Navbar = ({ onClick, menu }) => {
       <div className="hidden gap-2 lg:flex">
         <ButtonPassive
           text="Entrar"
-          classProperty="text-sm"
+          toHref="/login"
         />
         <ButtonCta
           text="Registrate"
