@@ -1,15 +1,9 @@
-import { useContext } from 'react';
-
-import { InputContext } from '../context/InputContext';
-
 import ButtonCta from '../components/Buttons/ButtonCta';
 import Input from '../components/Form/Input';
 import Logo from '../components/Logo';
 import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Login = () => {
-  const { input, updateInput } = useContext(InputContext);
-
   return (
     <div className="flex h-screen items-center justify-center bg-primary-900 bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat text-dark-800">
       <div className="mx-10 flex w-full flex-col rounded-xl bg-dark-100 p-8 md:max-w-[40rem]">
@@ -23,12 +17,10 @@ const Login = () => {
           title="Ingresa a tu cuenta"
           classProperty="text-xl"
         />
-        <form className="flex flex-col gap-5">
+        <form className="flex flex-col">
           <Input
             inputType="text"
             inputPlaceholder="Correo"
-            inputOnChange={updateInput}
-            inputValue={input}
           />
           <Input
             inputType="password"
