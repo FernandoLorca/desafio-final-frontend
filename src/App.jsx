@@ -4,8 +4,6 @@ import HomePublic from './pages/HomePublic';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 
-import InputProvider from './context/InputContext.jsx';
-
 const App = () => {
   return (
     <Routes>
@@ -15,11 +13,7 @@ const App = () => {
       />
       <Route
         path="/login"
-        element={
-          <InputProvider>
-            <Login />
-          </InputProvider>
-        }
+        element={<Login />}
       />
       <Route
         path="*"
