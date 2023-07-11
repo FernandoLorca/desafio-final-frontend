@@ -18,10 +18,7 @@ const Navbar = ({ onClick, menu }) => {
           text="Entrar"
           toHref="/login"
         />
-        <ButtonCta
-          text="Registrate"
-          textSize="text-sm"
-        />
+        <ButtonCta text="Registrate" />
       </div>
       <div
         className="lg:hidden"
