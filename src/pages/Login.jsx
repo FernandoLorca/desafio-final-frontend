@@ -26,11 +26,12 @@ const Login = () => {
             inputType="password"
             inputPlaceholder="Contraseña"
           />
-          <ButtonCta
-            text="Ingresar"
-            textSize="text-dark-100"
-            type="submit"
-          />
+          <div className="lg:w-1/4">
+            <ButtonCta
+              text="Ingresar"
+              type="submit"
+            />
+          </div>
         </form>
       </div>
     </div>
