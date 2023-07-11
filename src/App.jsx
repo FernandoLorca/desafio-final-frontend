@@ -9,7 +9,10 @@ import InputProvider from './context/InputContext.jsx';
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePublic />} />
+      <Route
+        path="/"
+        element={<HomePublic />}
+      />
       <Route
         path="/login"
         element={
@@ -18,7 +21,10 @@ const App = () => {
           </InputProvider>
         }
       />
-      <Route path="*" element={<NotFound />} />
+      <Route
+        path="*"
+        element={<NotFound />}
+      />
     </Routes>
   );
 };
