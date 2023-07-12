@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 
 import { AuthContext } from '../context/AuthContext';
 
@@ -8,7 +8,7 @@ import Logo from '../components/Logo';
 import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Login = () => {
-  const { token, saveToken } = useContext(AuthContext);
+  const { saveToken, getUserProfile } = useContext(AuthContext);
 
   const [email, setEmail] = useState('john@mail.com');
   const [password, setPassword] = useState('changeme');
@@ -27,6 +27,7 @@ const Login = () => {
       });
       const { access_token } = await res.json();
       saveToken(access_token);
+      await getUserProfile(access_token);
     } catch (error) {
       console.error(error);
     }
@@ -36,8 +37,6 @@ const Login = () => {
     e.preventDefault();
     getData();
   };
-
-  console.log(token);
 
   return (
     <div className="flex h-screen items-center justify-center bg-primary-900 bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat text-dark-800">
