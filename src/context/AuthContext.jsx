@@ -5,6 +5,9 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
+  const [inputValue, setInputValue] = useState('');
+
+  const saveInputValue = value => setInputValue(value);
 
   const getUserProfile = async accessToken => {
     try {
@@ -24,7 +27,16 @@ const AuthProvider = ({ children }) => {
   const saveToken = accessToken => setToken(accessToken);
 
   return (
-    <AuthContext.Provider value={{ token, saveToken, getUserProfile, user }}>
+    <AuthContext.Provider
+      value={{
+        token,
+        saveToken,
+        getUserProfile,
+        user,
+        saveInputValue,
+        inputValue,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

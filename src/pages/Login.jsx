@@ -1,13 +1,13 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../context/AuthContext';
-
 import ButtonCta from '../components/Buttons/ButtonCta';
-import Input from '../components/Form/Input';
 import Logo from '../components/Logo';
 import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Login = () => {
+  const navigate = useNavigate();
   const { saveToken, getUserProfile } = useContext(AuthContext);
 
   const [email, setEmail] = useState('john@mail.com');
@@ -28,6 +28,7 @@ const Login = () => {
       const { access_token } = await res.json();
       saveToken(access_token);
       await getUserProfile(access_token);
+      navigate('/hola');
     } catch (error) {
       console.error(error);
     }
@@ -55,14 +56,24 @@ const Login = () => {
           className="flex flex-col"
           onSubmit={formHandler}
         >
-          <Input
-            inputType="text"
-            inputPlaceholder="Correo"
-          />
-          <Input
-            inputType="password"
-            inputPlaceholder="Contraseña"
-          />
+          <div className="mb-5">
+            <input
+              className="w-full rounded-xl py-2 pl-2 focus:outline-none focus:ring focus:ring-primary-400"
+              type="text"
+              placeholder="Email"
+              onChange={e => setEmail(e.target.value)}
+              value={email}
+            />
+          </div>
+          <div className="mb-5">
+            <input
+              className="w-full rounded-xl py-2 pl-2 focus:outline-none focus:ring focus:ring-primary-400"
+              type="password"
+              placeholder="Contraseña"
+              onChange={e => setPassword(e.target.value)}
+              value={password}
+            />
+          </div>
           <div className="lg:w-1/4">
             <ButtonCta
               text="Ingresar"
