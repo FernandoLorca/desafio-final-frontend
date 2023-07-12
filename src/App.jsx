@@ -4,6 +4,8 @@ import HomePublic from './pages/HomePublic';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 
+import AuthProvider from './context/AuthContext';
+
 const App = () => {
   return (
     <Routes>
@@ -13,7 +15,11 @@ const App = () => {
       />
       <Route
         path="/login"
-        element={<Login />}
+        element={
+          <AuthProvider>
+            <Login />
+          </AuthProvider>
+        }
       />
       <Route
         path="*"
