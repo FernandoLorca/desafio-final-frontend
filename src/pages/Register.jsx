@@ -7,13 +7,42 @@ import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Register = () => {
   const [newUser, setNewUser] = useState({
-    email: '',
+    email: 'test16@gmail.com',
+    password: '12345678',
+    repeatPassword: '12345678',
     emailError: false,
-    password: '',
-    repeatPassword: '',
     passwordErrorMatch: false,
     lengthError: false,
+    serverResponse: null,
   });
+
+  console.log(newUser.serverResponse);
+
+  const registerUser = async () => {
+    try {
+      const res = await fetch(
+        import.meta.env.VITE_API_URL + '/users/register',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: newUser.email,
+            password: newUser.password,
+          }),
+        }
+      );
+      const data = await res.json();
+      setNewUser({
+        ...newUser,
+        serverResponse: res.status,
+      });
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const formHandler = (e, email, password, repeatPassword) => {
     e.preventDefault();
@@ -29,10 +58,12 @@ const Register = () => {
         lengthError: false,
       });
       return;
-    } else {
+    } else if (validation) {
       setNewUser({
         ...newUser,
         emailError: false,
+        passwordErrorMatch: false,
+        lengthError: false,
       });
     }
 
@@ -40,7 +71,7 @@ const Register = () => {
     if (password !== repeatPassword) {
       setNewUser({
         ...newUser,
-        emailError: true,
+        emailError: false,
         passwordErrorMatch: true,
         lengthError: false,
       });
@@ -48,10 +79,10 @@ const Register = () => {
     }
 
     // Password length validation
-    if (password.length < 8 || password.length > 15) {
+    if (password.length < 8 || password.length > 20) {
       setNewUser({
         ...newUser,
-        emailError: true,
+        emailError: false,
         passwordErrorMatch: false,
         lengthError: true,
       });
@@ -65,6 +96,8 @@ const Register = () => {
       passwordErrorMatch: false,
       lengthError: false,
     });
+
+    registerUser();
   };
 
   return (
@@ -142,8 +175,22 @@ const Register = () => {
               {newUser.passwordErrorMatch
                 ? 'Las contraseñas no coinciden'
                 : newUser.lengthError
-                ? 'La contraseña debe tener entre 8 y 15 caracteres'
+                ? 'La contraseña debe tener entre 8 y 20 caracteres'
                 : ''}
+            </p>
+            <p
+              className={`ml-2 mt-1 text-xs ${
+                newUser.serverResponse === null && 'hidden'
+              }`}
+              style={
+                newUser.serverResponse === 200 || newUser.serverResponse === 201
+                  ? { color: 'green' }
+                  : { color: 'red' }
+              }
+            >
+              {newUser.serverResponse === 200 || newUser.serverResponse === 201
+                ? 'Usuario creado correctamente'
+                : 'Hubo un error al crear el usuario'}
             </p>
           </div>
           <div className="flex items-center gap-5 lg:w-1/4">
