@@ -7,16 +7,14 @@ import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Register = () => {
   const [newUser, setNewUser] = useState({
-    email: 'test16@gmail.com',
-    password: '12345678',
-    repeatPassword: '12345678',
+    email: 'test17@gmail.com',
+    password: '12345678901234567890',
+    repeatPassword: '12345678901234567890',
     emailError: false,
     passwordErrorMatch: false,
     lengthError: false,
     serverResponse: null,
   });
-
-  console.log(newUser.serverResponse);
 
   const registerUser = async () => {
     try {
