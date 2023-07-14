@@ -15,7 +15,7 @@ const Register = () => {
     lengthError: false,
   });
 
-  function validarCorreoElectronico(email) {
+  function emailValidation(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   }
@@ -23,7 +23,7 @@ const Register = () => {
   const formHandler = (e, password, repeatPassword) => {
     e.preventDefault();
 
-    if (!validarCorreoElectronico(newUser.email)) {
+    if (!emailValidation(newUser.email)) {
       setNewUser({
         ...newUser,
         emailError: true,
