@@ -1,17 +1,18 @@
 import Hero from '../components/Hero/Hero';
-import NavbarPublicButtons from '../components/Navbar/NavbarPublicButtons';
+import NavbarPrivateButtons from '../components/Navbar/NavbarPublicButtons';
 import Categories from '../components/Categories/Categories';
 import Products from '../components/Products/Products';
 import Footer from '../components/Footer/Footer';
 
-const HomePublic = () => {
+const HomePrivate = () => {
   return (
     <div className="text-dark-800">
+      <h1>PRIVADO</h1>
       <Hero
         heroBackground="bg-[url('/hero.webp')]"
         heroTitle="Las mejores ofertas en productos electrónicos"
         heroSubTitle="La tienda con mas ofertas en Chile en productos electrónicos"
-        navbarAuthButtons={<NavbarPublicButtons />}
+        navbarAuthButtons={<NavbarPrivateButtons />}
       />
       <Categories />
       <Products title="Tarjetas de video" />
@@ -22,4 +23,4 @@ const HomePublic = () => {
   );
 };
 
-export default HomePublic;
+export default HomePrivate;

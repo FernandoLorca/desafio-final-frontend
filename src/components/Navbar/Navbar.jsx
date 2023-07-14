@@ -1,10 +1,8 @@
 import { BsList, BsXLg } from 'react-icons/bs';
 
 import NavbarList from './NavbarList';
-import ButtonPassive from '../Buttons/ButtonPassive';
-import ButtonCta from '../Buttons/ButtonCta';
 
-const Navbar = ({ onClick, menu }) => {
+const Navbar = ({ onClick, menu, navbarAuthButtons }) => {
   return (
     <div className="flex items-center justify-between md:px-16">
       <img
@@ -13,13 +11,7 @@ const Navbar = ({ onClick, menu }) => {
         className="w-16 md:w-10"
       />
       <NavbarList />
-      <div className="hidden gap-2 lg:flex">
-        <ButtonPassive
-          text="Entrar"
-          toHref="/login"
-        />
-        <ButtonCta text="Registrate" />
-      </div>
+      {navbarAuthButtons}
       <div
         className="lg:hidden"
         onClick={onClick}

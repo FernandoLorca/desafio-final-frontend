@@ -1,12 +1,16 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+
+import { AuthContext } from './context/AuthContext';
 
 import HomePublic from './pages/HomePublic';
+import HomePrivate from './pages/HomePrivate';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 
-import AuthProvider from './context/AuthContext';
-
 const App = () => {
+  const { user, response } = useContext(AuthContext);
+  console.log(user);
   return (
     <Routes>
       <Route
@@ -15,11 +19,11 @@ const App = () => {
       />
       <Route
         path="/login"
-        element={
-          <AuthProvider>
-            <Login />
-          </AuthProvider>
-        }
+        element={<Login />}
+      />
+      <Route
+        path="/auth"
+        element={user ? <HomePrivate /> : <Navigate to="/login" />}
       />
       <Route
         path="*"

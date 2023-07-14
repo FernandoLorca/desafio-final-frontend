@@ -1,7 +1,8 @@
-import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
 
 import { AuthContext } from '../context/AuthContext';
+
 import ButtonCta from '../components/Buttons/ButtonCta';
 import Logo from '../components/Logo';
 import TitleOne from '../components/Titles.jsx/TitleOne';
@@ -9,7 +10,6 @@ import TitleOne from '../components/Titles.jsx/TitleOne';
 const Login = () => {
   const navigate = useNavigate();
   const { saveToken, getUserProfile } = useContext(AuthContext);
-
   const [email, setEmail] = useState('john@mail.com');
   const [password, setPassword] = useState('changeme');
 
@@ -28,7 +28,7 @@ const Login = () => {
       const { access_token } = await res.json();
       saveToken(access_token);
       await getUserProfile(access_token);
-      navigate('/hola');
+      navigate('/');
     } catch (error) {
       console.error(error);
     }
