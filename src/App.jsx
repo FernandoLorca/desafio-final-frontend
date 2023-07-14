@@ -5,12 +5,12 @@ import { AuthContext } from './context/AuthContext';
 
 import HomePublic from './pages/HomePublic';
 import HomePrivate from './pages/HomePrivate';
-import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import NotFound from './pages/NotFound';
 
 const App = () => {
-  const { user, response } = useContext(AuthContext);
-  console.log(user);
+  const { user } = useContext(AuthContext);
   return (
     <Routes>
       <Route
@@ -20,6 +20,10 @@ const App = () => {
       <Route
         path="/login"
         element={<Login />}
+      />
+      <Route
+        path="/register"
+        element={<Register />}
       />
       <Route
         path="/auth"
