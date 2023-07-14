@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import ButtonCta from '../Buttons/ButtonCta';
 import ButtonPassive from '../Buttons/ButtonPassive';
 
@@ -8,7 +10,9 @@ const NavbarPublicButtons = () => {
         text="Entrar"
         toHref="/login"
       />
-      <ButtonCta text="Registrate" />
+      <Link to="/register">
+        <ButtonCta text="Registrate" />
+      </Link>
     </div>
   );
 };

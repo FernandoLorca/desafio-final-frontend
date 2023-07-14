@@ -15,15 +15,13 @@ const Register = () => {
     lengthError: false,
   });
 
-  function emailValidation(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  }
-
-  const formHandler = (e, password, repeatPassword) => {
+  const formHandler = (e, email, password, repeatPassword) => {
     e.preventDefault();
 
-    if (!emailValidation(newUser.email)) {
+    // Email validation with regex
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const validation = regex.test(email);
+    if (!validation) {
       setNewUser({
         ...newUser,
         emailError: true,
@@ -31,8 +29,14 @@ const Register = () => {
         lengthError: false,
       });
       return;
+    } else {
+      setNewUser({
+        ...newUser,
+        emailError: false,
+      });
     }
 
+    // Password validation
     if (password !== repeatPassword) {
       setNewUser({
         ...newUser,
@@ -43,6 +47,7 @@ const Register = () => {
       return;
     }
 
+    // Password length validation
     if (password.length < 8 || password.length > 15) {
       setNewUser({
         ...newUser,
@@ -53,6 +58,7 @@ const Register = () => {
       return;
     }
 
+    // If all validations are passed, then the user is created
     setNewUser({
       ...newUser,
       emailError: false,
@@ -77,7 +83,12 @@ const Register = () => {
         <form
           className="flex flex-col"
           onSubmit={e =>
-            formHandler(e, newUser.password, newUser.repeatPassword)
+            formHandler(
+              e,
+              newUser.email,
+              newUser.password,
+              newUser.repeatPassword
+            )
           }
         >
           <div className="mb-5">
