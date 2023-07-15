@@ -26,10 +26,9 @@ const Login = () => {
         }),
       });
       const { token } = await res.json();
-      console.log(token);
       saveToken(token);
-      await getUserProfile(token);
-      // navigate('/');
+      await getUserProfile(token, email, password);
+      navigate('/');
     } catch (error) {
       console.error(error);
     }
