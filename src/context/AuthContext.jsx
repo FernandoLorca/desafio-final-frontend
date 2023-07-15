@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
   const getUserProfile = async accessToken => {
     try {
-      const res = await fetch(import.meta.env.VITE_API_URL + '/auth/profile', {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/users/login', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${accessToken}`,

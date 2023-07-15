@@ -10,12 +10,12 @@ import TitleOne from '../components/Titles.jsx/TitleOne';
 const Login = () => {
   const navigate = useNavigate();
   const { saveToken, getUserProfile } = useContext(AuthContext);
-  const [email, setEmail] = useState('john@mail.com');
-  const [password, setPassword] = useState('changeme');
+  const [email, setEmail] = useState('test2@gmail.com');
+  const [password, setPassword] = useState('12345678');
 
   const getData = async () => {
     try {
-      const res = await fetch(import.meta.env.VITE_API_URL + '/auth/login', {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,10 +25,11 @@ const Login = () => {
           password,
         }),
       });
-      const { access_token } = await res.json();
-      saveToken(access_token);
-      await getUserProfile(access_token);
-      navigate('/');
+      const { token } = await res.json();
+      console.log(token);
+      saveToken(token);
+      await getUserProfile(token);
+      // navigate('/');
     } catch (error) {
       console.error(error);
     }
