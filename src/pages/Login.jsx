@@ -16,10 +16,10 @@ const Login = () => {
   console.log(user);
 
   useEffect(() => {
-    if (token) {
+    if (token && user) {
       navigate('/');
     }
-  }, [token, navigate]);
+  }, [token, user, navigate]);
 
   const getToken = async () => {
     try {
