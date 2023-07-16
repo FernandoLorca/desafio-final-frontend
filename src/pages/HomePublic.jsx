@@ -1,3 +1,5 @@
+import AuthProvider from '../context/AuthContext';
+
 import Hero from '../components/Hero/Hero';
 import NavbarPublicButtons from '../components/Navbar/NavbarPublicButtons';
 import Categories from '../components/Categories/Categories';
@@ -7,12 +9,14 @@ import Footer from '../components/Footer/Footer';
 const HomePublic = () => {
   return (
     <div className="text-dark-800">
-      <Hero
-        heroBackground="bg-[url('/hero.webp')]"
-        heroTitle="Las mejores ofertas en productos electrónicos"
-        heroSubTitle="La tienda con mas ofertas en Chile en productos electrónicos"
-        navbarAuthButtons={<NavbarPublicButtons />}
-      />
+      <AuthProvider>
+        <Hero
+          heroBackground="bg-[url('/hero.webp')]"
+          heroTitle="Las mejores ofertas en productos electrónicos"
+          heroSubTitle="La tienda con mas ofertas en Chile en productos electrónicos"
+          navbarAuthButtons={<NavbarPublicButtons />}
+        />
+      </AuthProvider>
       <Categories />
       <Products title="Tarjetas de video" />
       <Products title="Ssd y Hdd" />
