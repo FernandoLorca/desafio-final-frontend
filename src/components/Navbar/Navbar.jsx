@@ -1,8 +1,13 @@
 import { BsList, BsXLg } from 'react-icons/bs';
+import { useContext } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
 
 import NavbarList from './NavbarList';
+import NavbarPublicButtons from './NavbarPublicButtons';
 
-const Navbar = ({ onClick, menu, navbarAuthButtons }) => {
+const Navbar = ({ onClick, menu }) => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="flex items-center justify-between md:px-16">
       <img
@@ -11,7 +16,7 @@ const Navbar = ({ onClick, menu, navbarAuthButtons }) => {
         className="w-16 md:w-10"
       />
       <NavbarList />
-      {navbarAuthButtons}
+      <NavbarPublicButtons />
       <div
         className="lg:hidden"
         onClick={onClick}

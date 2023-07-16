@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import AuthProvider from '../../context/AuthContext';
-
 import ButtonCta from '../Buttons/ButtonCta';
 import Navbar from '../Navbar/Navbar';
 import NavbarListMobile from '../Navbar/NavbarListMobile';
@@ -21,13 +19,11 @@ const Hero = ({
       className={`relative h-screen bg-cover bg-center bg-no-repeat text-dark-100 ${heroBackground}`}
     >
       <div className="absolute z-30 w-full px-5 py-2 md:py-3">
-        <AuthProvider>
-          <Navbar
-            onClick={() => setMenu(!menu)}
-            menu={menu}
-            navbarAuthButtons={navbarAuthButtons}
-          />
-        </AuthProvider>
+        <Navbar
+          onClick={() => setMenu(!menu)}
+          menu={menu}
+          navbarAuthButtons={navbarAuthButtons}
+        />
       </div>
       <div className="absolute z-10 h-full w-full bg-dark-900 opacity-70"></div>
       <div className="relative z-20">

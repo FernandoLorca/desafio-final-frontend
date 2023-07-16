@@ -25,6 +25,7 @@ const AuthProvider = ({ children }) => {
       setUser(data);
     } catch (error) {
       console.error(error);
+      return null;
     }
   };
 
@@ -32,6 +33,8 @@ const AuthProvider = ({ children }) => {
     setToken(accessToken);
     localStorage.setItem('token', accessToken);
   };
+
+  const saveUser = user => setUser(user);
 
   const logOut = () => {
     setToken(null);
@@ -46,6 +49,7 @@ const AuthProvider = ({ children }) => {
         saveToken,
         getUserProfile,
         user,
+        saveUser,
         logOut,
       }}
     >

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 import { AuthContext } from '../context/AuthContext';
 
@@ -9,11 +9,17 @@ import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { saveToken, getUserProfile } = useContext(AuthContext);
+  const { token, saveToken, user, saveUser } = useContext(AuthContext);
   const [email, setEmail] = useState('test2@gmail.com');
   const [password, setPassword] = useState('12345678');
 
-  const getData = async () => {
+  useEffect(() => {
+    if (token && user) {
+      navigate('/');
+    }
+  }, [token, user, navigate]);
+
+  const getToken = async () => {
     try {
       const res = await fetch(import.meta.env.VITE_API_URL + '/users/login', {
         method: 'POST',
@@ -27,16 +33,35 @@ const Login = () => {
       });
       const { token } = await res.json();
       saveToken(token);
-      await getUserProfile(token, email, password);
-      navigate('/');
     } catch (error) {
       console.error(error);
     }
   };
 
-  const formHandler = e => {
+  const getUser = async () => {
+    try {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/users/user', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const data = await res.json();
+      saveUser(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const formHandler = async e => {
     e.preventDefault();
-    getData();
+    await getToken();
+    await getUser();
   };
 
   return (
