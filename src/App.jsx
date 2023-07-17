@@ -1,10 +1,9 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 
 import { AuthContext } from './context/AuthContext';
 
-import HomePublic from './pages/HomePublic';
-import HomePrivate from './pages/HomePrivate';
+import HomePublic from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
@@ -24,10 +23,6 @@ const App = () => {
       <Route
         path="/register"
         element={<Register />}
-      />
-      <Route
-        path="/auth"
-        element={user ? <HomePrivate /> : <Navigate to="/login" />}
       />
       <Route
         path="*"

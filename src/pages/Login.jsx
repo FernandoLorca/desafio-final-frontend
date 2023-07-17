@@ -41,15 +41,10 @@ const Login = () => {
   const getUser = async () => {
     try {
       const res = await fetch(import.meta.env.VITE_API_URL + '/users/user', {
-        method: 'POST',
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
       });
       const data = await res.json();
       saveUser(data);
