@@ -1,13 +1,22 @@
 import ButtonCta from '../Buttons/ButtonCta';
 import ButtonPassive from '../Buttons/ButtonPassive';
 import NavbarListItem from './NavbarListItem';
+import NavbarPrivateButtons from './NavbarPrivateButtons';
 
-const NavbarListMobile = ({ menu }) => {
+const NavbarListMobile = ({ menu, user }) => {
   return (
     <nav className={menu ? 'block' : 'hidden'}>
       <div className="flex flex-col gap-5 px-5 pt-28">
-        <ButtonPassive text="Entrar" />
-        <ButtonCta text="Registrate" />
+        {user && [user].length > 0 ? (
+          <div className="flex justify-center lg:hidden">
+            <NavbarPrivateButtons />
+          </div>
+        ) : (
+          <>
+            <ButtonPassive text="Entrar" />
+            <ButtonCta text="Registrate" />
+          </>
+        )}
       </div>
       <ul className="flex flex-col items-center gap-14 pt-16">
         <NavbarListItem

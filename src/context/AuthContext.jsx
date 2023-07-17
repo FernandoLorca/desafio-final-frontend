@@ -8,33 +8,27 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(initialStateToken);
   const [user, setUser] = useState(null);
 
-  const getUserProfile = async (accessToken, email, password) => {
-    try {
-      const res = await fetch(import.meta.env.VITE_API_URL + '/users/user', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
-      const data = await res.json();
-      setUser(data);
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
-  };
-
   const saveToken = accessToken => {
     setToken(accessToken);
     localStorage.setItem('token', accessToken);
   };
 
   const saveUser = user => setUser(user);
+
+  const getUser = async () => {
+    try {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/users/user', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await res.json();
+      saveUser(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const logOut = () => {
     setToken(null);
@@ -47,9 +41,9 @@ const AuthProvider = ({ children }) => {
       value={{
         token,
         saveToken,
-        getUserProfile,
         user,
         saveUser,
+        getUser,
         logOut,
       }}
     >
