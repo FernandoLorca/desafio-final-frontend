@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import ButtonCta from '../components/Buttons/ButtonCta';
 import Logo from '../components/Logo';
@@ -7,14 +7,17 @@ import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Register = () => {
   const [newUser, setNewUser] = useState({
-    email: '',
-    password: '',
-    repeatPassword: '',
+    email: 'test10@gmail.com',
+    password: '12345678',
+    repeatPassword: '123456789',
     emailError: false,
     passwordErrorMatch: false,
     lengthError: false,
     serverResponse: null,
+    formSubmitted: false,
   });
+
+  console.log(newUser.passwordErrorMatch);
 
   const registerUser = async () => {
     try {
@@ -82,7 +85,6 @@ const Register = () => {
         ...newUser,
         emailError: false,
         passwordErrorMatch: false,
-        lengthError: true,
       });
       return;
     }
@@ -92,11 +94,16 @@ const Register = () => {
       ...newUser,
       emailError: false,
       passwordErrorMatch: false,
-      lengthError: false,
+      formSubmitted: true,
     });
-
-    registerUser();
   };
+
+  useEffect(() => {
+    if (newUser.serverResponse === null && newUser.formSubmitted) {
+      registerUser();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newUser.serverResponse, newUser.formSubmitted]);
 
   return (
     <div className="flex h-screen items-center justify-center bg-primary-900 bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat text-dark-800">
