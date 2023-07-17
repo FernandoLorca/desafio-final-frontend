@@ -6,7 +6,7 @@ const Categories = () => {
     <div className="px-5 pt-10 lg:w-full">
       <div className="md:px-16">
         <TitleTwo
-          title="Categortias"
+          title="Categorias"
           textSize="text-4xl"
         />
       </div>
