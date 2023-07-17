@@ -1,20 +1,16 @@
-import { Routes, Route, Navigate, useParams } from 'react-router-dom';
-import { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import { AuthContext } from './context/AuthContext';
-
-import HomePublic from './pages/Home';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 
 const App = () => {
-  const { user } = useContext(AuthContext);
   return (
     <Routes>
       <Route
         path="/"
-        element={<HomePublic />}
+        element={<Home />}
       />
       <Route
         path="/login"

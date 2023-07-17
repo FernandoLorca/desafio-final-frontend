@@ -7,9 +7,9 @@ import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Register = () => {
   const [newUser, setNewUser] = useState({
-    email: 'test10@gmail.com',
-    password: '12345678',
-    repeatPassword: '123456789',
+    email: '',
+    password: '',
+    repeatPassword: '',
     emailError: false,
     passwordErrorMatch: false,
     lengthError: false,

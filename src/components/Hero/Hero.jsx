@@ -1,4 +1,7 @@
-import { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useContext, useEffect } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
 
 import ButtonCta from '../Buttons/ButtonCta';
 import Navbar from '../Navbar/Navbar';
@@ -12,7 +15,14 @@ const Hero = ({
   heroSubTitle,
   displayButton = 'block',
 }) => {
+  const { token, getUser, user } = useContext(AuthContext);
   const [menu, setMenu] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+      getUser();
+    }
+  }, [token]);
 
   return (
     <div
@@ -23,6 +33,7 @@ const Hero = ({
           onClick={() => setMenu(!menu)}
           menu={menu}
           navbarAuthButtons={navbarAuthButtons}
+          user={user && [user].length > 0 && user}
         />
       </div>
       <div className="absolute z-10 h-full w-full bg-dark-900 opacity-70"></div>
