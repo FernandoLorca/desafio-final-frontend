@@ -2,6 +2,7 @@ import { BsList, BsXLg } from 'react-icons/bs';
 
 import NavbarList from './NavbarList';
 import NavbarPublicButtons from './NavbarPublicButtons';
+import NavbarPrivateButtons from './NavbarPrivateButtons';
 
 const Navbar = ({ onClick, menu, user }) => {
   return (
@@ -13,7 +14,9 @@ const Navbar = ({ onClick, menu, user }) => {
       />
       <NavbarList />
       {user && [user].length > 0 ? (
-        'Componente perfil de usuario'
+        <div className="hidden lg:block">
+          <NavbarPrivateButtons />
+        </div>
       ) : (
         <NavbarPublicButtons />
       )}

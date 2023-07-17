@@ -32,13 +32,15 @@ const Hero = ({
         <Navbar
           onClick={() => setMenu(!menu)}
           menu={menu}
-          navbarAuthButtons={navbarAuthButtons}
           user={user && [user].length > 0 && user}
         />
       </div>
       <div className="absolute z-10 h-full w-full bg-dark-900 opacity-70"></div>
       <div className="relative z-20">
-        <NavbarListMobile menu={menu} />
+        <NavbarListMobile
+          menu={menu}
+          user={user && [user].length > 0 && user}
+        />
       </div>
       <div className="relative z-20 flex justify-center">
         <div

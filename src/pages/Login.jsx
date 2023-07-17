@@ -13,6 +13,8 @@ const Login = () => {
   const [email, setEmail] = useState('test2@gmail.com');
   const [password, setPassword] = useState('12345678');
 
+  console.log(user);
+
   useEffect(() => {
     if (token && user) {
       navigate('/');
