@@ -2,36 +2,36 @@
   {
     "id": 1,
     "name": "Placas madre",
-    "img": "/categories/mother.webp"
+    "img": "categories/mother.webp"
   },
   {
     "id": 2,
     "name": "Ram",
-    "img": "/categories/ram.webp"
+    "img": "categories/ram.webp"
   },
   {
     "id": 3,
     "name": "Ssd y Hdd",
-    "img": "/categories/ssd.webp"
+    "img": "categories/ssd.webp"
   },
   {
     "id": 4,
     "name": "Gabinetes",
-    "img": "/categories/gabinetes.webp"
+    "img": "categories/gabinetes.webp"
   },
   {
     "id": 5,
     "name": "Fuentes de poder",
-    "img": "/categories/fuente.webp"
+    "img": "categories/fuente.webp"
   },
   {
     "id": 6,
     "name": "Tarjetas de video",
-    "img": "/categories/video.webp"
+    "img": "categories/video.webp"
   },
   {
     "id": 7,
     "name": "Procesadores",
-    "img": "/categories/proce.webp"
+    "img": "categories/proce.webp"
   }
 ]

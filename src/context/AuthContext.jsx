@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext();
 
@@ -15,6 +16,7 @@ const AuthProvider = ({ children }) => {
 
   const saveUser = user => setUser(user);
 
+  // use effect para invocar getUser con cambio de token
   const getUser = async () => {
     try {
       const res = await fetch(import.meta.env.VITE_API_URL + '/users/user', {
@@ -29,6 +31,12 @@ const AuthProvider = ({ children }) => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      getUser();
+    }
+  }, [token]);
 
   const logOut = () => {
     setToken(null);
