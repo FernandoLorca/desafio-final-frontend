@@ -5,8 +5,22 @@ import { useEffect, useState } from 'react';
 import ProductsPerCategory from '../components/Products/ProductsPerCategory';
 
 const CategoryOfProduct = () => {
-  const { category } = useParams();
+  let { category } = useParams();
   const [products, setProducts] = useState([]);
+
+  console.log(category);
+
+  switch (category) {
+    case 'ssd-y-hdd':
+      category = 'discos';
+      break;
+    case 'fuentes-de-poder':
+      category = 'fuentes-poder';
+      break;
+    case 'tarjetas-de-video':
+      category = 'tarjetas-video';
+      break;
+  }
 
   const getVideoCards = async () => {
     try {

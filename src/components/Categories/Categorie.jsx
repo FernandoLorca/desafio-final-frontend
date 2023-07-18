@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 const Categorie = ({ title, categorie }) => {
   const path = title.toLowerCase().split(' ').join('-');
 
-  console.log(categorie);
   const img = categorie.img;
 
   return (
