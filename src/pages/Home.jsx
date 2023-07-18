@@ -62,7 +62,7 @@ const HomePublic = () => {
       <AuthProvider>
         <Hero
           heroBackground="bg-[url('/hero.webp')]"
-          heroTitle="Las mejores ofertas en productos electrónicos"
+          heroTitle="Las mejores ofertas en productos electrónicoss"
           heroSubTitle="La tienda con mas ofertas en Chile en productos electrónicos"
         />
       </AuthProvider>
