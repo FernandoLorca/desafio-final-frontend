@@ -2,7 +2,7 @@ import { BsInstagram, BsFacebook, BsTwitter } from 'react-icons/bs';
 
 import Logo from '../Logo';
 import Link from '../Buttons/Link';
-import Rrss from '../RRSS';
+import Rrss from '../Rrss';
 import ButtonPassive from '../Buttons/ButtonPassive';
 import ButtonCta from '../Buttons/ButtonCta';
 
