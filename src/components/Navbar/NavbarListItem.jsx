@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 
-const NavbarListItem = ({ text, textSize, anchor }) => {
+const NavbarListItem = ({ text, category, currentPath }) => {
+  const name = category && category.name;
+  const path = category && name.toLowerCase().split(' ').join('-');
+
+  const isActive = currentPath === `/${path}`;
+
   return (
-    <li className={`flex items-center ${textSize}`}>
-      <Link
-        className="hover:underline"
-        to={anchor}
-      >
-        {text}
-      </Link>
-    </li>
+    <Link
+      className={`hover:underline ${isActive ? 'underline' : ''}`}
+      to={`/${path}`}
+    >
+      {text}
+    </Link>
   );
 };
 

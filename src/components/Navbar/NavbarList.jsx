@@ -1,49 +1,28 @@
 import NavbarListItem from './NavbarListItem';
+import categories from '../Categories/categories.json';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavbarList = () => {
+  const location = useLocation();
+
   return (
     <nav className="hidden px-5 lg:block">
       <ul className="text flex gap-5">
-        <NavbarListItem
-          textSize="text-sm"
-          anchor="#"
-          text="Inicio"
-        />
-        <NavbarListItem
-          textSize="text-sm"
-          anchor="#"
-          text="Placas madre"
-        />
-        <NavbarListItem
-          textSize="text-sm"
-          anchor="#"
-          text="Ram"
-        />
-        <NavbarListItem
-          textSize="text-sm"
-          anchor="#"
-          text="Ssd y Hdd"
-        />
-        <NavbarListItem
-          textSize="text-sm"
-          anchor="#"
-          text="Gabinetes"
-        />
-        <NavbarListItem
-          textSize="text-sm"
-          anchor="#"
-          text="Fuentes de poder"
-        />
-        <NavbarListItem
-          textSize="text-sm"
-          anchor="#"
-          text="Tarjetas de video"
-        />
-        <NavbarListItem
-          textSize="text-sm"
-          anchor="#"
-          text="Procesadores"
-        />
+        <li className="flex items-center text-sm">
+          <Link to="/">Inicio</Link>
+        </li>
+        {categories.map(category => (
+          <li
+            className="flex items-center text-sm"
+            key={category.id}
+          >
+            <NavbarListItem
+              category={category}
+              text={category.name}
+              currentPath={location.pathname}
+            />
+          </li>
+        ))}
       </ul>
     </nav>
   );

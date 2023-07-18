@@ -64,7 +64,6 @@ const HomePublic = () => {
           heroBackground="bg-[url('/hero.webp')]"
           heroTitle="Las mejores ofertas en productos electrónicos"
           heroSubTitle="La tienda con mas ofertas en Chile en productos electrónicos"
-          navbarAuthButtons={<NavbarPublicButtons />}
         />
       </AuthProvider>
       <Categories />

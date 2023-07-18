@@ -1,7 +1,10 @@
+import { useLocation } from 'react-router-dom';
+
 import ButtonCta from '../Buttons/ButtonCta';
 import ButtonPassive from '../Buttons/ButtonPassive';
 import NavbarListItem from './NavbarListItem';
 import NavbarPrivateButtons from './NavbarPrivateButtons';
+import categories from '../Categories/categories.json';
 
 const NavbarListMobile = ({ menu, user }) => {
   return (
@@ -19,46 +22,18 @@ const NavbarListMobile = ({ menu, user }) => {
         )}
       </div>
       <ul className="flex flex-col items-center gap-14 pt-16">
-        <NavbarListItem
-          textSize="text-3xl"
-          anchor="#"
-          text="Inicio"
-        />
-        <NavbarListItem
-          textSize="text-3xl"
-          anchor="#"
-          text="Placas madre"
-        />
-        <NavbarListItem
-          textSize="text-3xl"
-          anchor="#"
-          text="Ram"
-        />
-        <NavbarListItem
-          textSize="text-3xl"
-          anchor="#"
-          text="Ssd y Hdd"
-        />
-        <NavbarListItem
-          textSize="text-3xl"
-          anchor="#"
-          text="Gabinetes"
-        />
-        <NavbarListItem
-          textSize="text-3xl"
-          anchor="#"
-          text="Fuentes de poder"
-        />
-        <NavbarListItem
-          textSize="text-3xl"
-          anchor="#"
-          text="Tarjetas de video"
-        />
-        <NavbarListItem
-          textSize="text-3xl"
-          anchor="#"
-          text="Procesadores"
-        />
+        {categories.map(category => (
+          <li
+            className="flex items-center text-sm"
+            key={category.id}
+          >
+            <NavbarListItem
+              category={category}
+              text={category.name}
+              currentPath={location.pathname}
+            />
+          </li>
+        ))}
       </ul>
     </nav>
   );
