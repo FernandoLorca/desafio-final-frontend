@@ -16,7 +16,7 @@ const Categories = () => {
           <Categorie
             key={categorie.id}
             title={categorie.name}
-            bgConfig={`bg-[url('${categorie.img}')] bg-repeat bg-center bg-cover`}
+            categorie={categorie}
           />
         ))}
       </div>

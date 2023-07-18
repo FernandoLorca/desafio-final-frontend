@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext();
 
@@ -29,6 +30,12 @@ const AuthProvider = ({ children }) => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      getUser();
+    }
+  }, [token]);
 
   const logOut = () => {
     setToken(null);

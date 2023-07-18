@@ -1,9 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
+import CategoryOfProduct from './pages/CategoryOfProduct';
 
 const App = () => {
   return (
@@ -19,6 +20,10 @@ const App = () => {
       <Route
         path="/register"
         element={<Register />}
+      />
+      <Route
+        path="/:category"
+        element={<CategoryOfProduct />}
       />
       <Route
         path="*"

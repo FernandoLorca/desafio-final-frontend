@@ -40,25 +40,9 @@ const Login = () => {
     }
   };
 
-  const getUser = async () => {
-    try {
-      const res = await fetch(import.meta.env.VITE_API_URL + '/users/user', {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await res.json();
-      saveUser(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const formHandler = async e => {
     e.preventDefault();
     await getToken();
-    await getUser();
   };
 
   return (
