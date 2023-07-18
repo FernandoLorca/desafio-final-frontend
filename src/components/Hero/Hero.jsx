@@ -9,7 +9,6 @@ import NavbarListMobile from '../Navbar/NavbarListMobile';
 import HeroText from './HeroText';
 
 const Hero = ({
-  navbarAuthButtons,
   heroBackground,
   heroTitle,
   heroSubTitle,
