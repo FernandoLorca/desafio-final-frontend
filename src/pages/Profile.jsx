@@ -16,8 +16,8 @@ const Profile = () => {
   return (
     <div>
       <NavbarMain />
-      <div className="px-5 py-5 md:px-16">
-        <ul>
+      <div className="px-5 py-5 md:px-20">
+        <ul className="text-center">
           <li className="mb-3">
             <TitleOne
               title="Perfil"
@@ -47,7 +47,12 @@ const Profile = () => {
             <p>Agregar información</p>
           </li>
         </ul>
-        <ButtonLink text="Editar perfil" />
+        <div className="py-2 text-center">
+          <ButtonLink
+            text="Editar perfil"
+            fontSize="text-xl"
+          />
+        </div>
       </div>
       <div className="-mt-10">
         <Footer />

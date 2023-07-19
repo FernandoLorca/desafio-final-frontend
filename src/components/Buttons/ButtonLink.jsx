@@ -3,7 +3,7 @@ const ButtonLink = ({ text, href, fontSize }) => {
     <div>
       <a
         href={href}
-        className={`underline hover:text-primary-500 ${fontSize} `}
+        className={`underline hover:text-primary-500 ${fontSize}`}
       >
         {text}
       </a>
