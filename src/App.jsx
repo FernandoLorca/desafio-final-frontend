@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import CategoryOfProduct from './pages/CategoryOfProduct';
+import Profile from './pages/Profile';
 
 const App = () => {
   return (
@@ -24,6 +25,10 @@ const App = () => {
       <Route
         path="/:category"
         element={<CategoryOfProduct />}
+      />
+      <Route
+        path="/perfil/:id"
+        element={<Profile />}
       />
       <Route
         path="*"

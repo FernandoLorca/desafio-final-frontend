@@ -1,4 +1,4 @@
-const Link = ({ text, href, fontSize }) => {
+const ButtonLink = ({ text, href, fontSize }) => {
   return (
     <div>
       <a
@@ -11,4 +11,4 @@ const Link = ({ text, href, fontSize }) => {
   );
 };
 
-export default Link;
+export default ButtonLink;

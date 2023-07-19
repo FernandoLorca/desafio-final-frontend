@@ -4,17 +4,15 @@ import { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../context/AuthContext';
 
-import Navbar from '../components/Navbar/Navbar';
-import NavbarListMobile from '../components/Navbar/NavbarListMobile';
 import ProductsPerCategory from '../components/Products/ProductsPerCategory';
 import Footer from '../components/Footer/Footer';
 import TitleOne from '../components/Titles.jsx/TitleOne';
+import NavbarMain from '../components/Navbar/NavbarMain';
 
 const CategoryOfProduct = () => {
-  const { token, getUser, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   let { category } = useParams();
   const [products, setProducts] = useState([]);
-  const [menu, setMenu] = useState(false);
 
   switch (category) {
     case 'ssd-y-hdd':
@@ -71,19 +69,7 @@ const CategoryOfProduct = () => {
 
   return (
     <>
-      <div className="bg-primary-800 px-5 py-2 text-dark-200">
-        <Navbar
-          onClick={() => setMenu(!menu)}
-          menu={menu}
-          user={user && [user].length > 0 && user}
-        />
-        <div className="relative z-20">
-          <NavbarListMobile
-            menu={menu}
-            user={user && [user].length > 0 && user}
-          />
-        </div>
-      </div>
+      <NavbarMain user={user} />
       <div className="pt-10 text-center">
         <TitleOne
           title={displayTitle(category)}

@@ -1,6 +1,6 @@
 import ProductTitle from './ProductTitle';
 import ProductPrice from './ProductPrice';
-import Link from '../Buttons/Link';
+import Link from '../Buttons/ButtonLink';
 
 const Product = ({ item }) => {
   let productItem;
