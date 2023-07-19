@@ -2,7 +2,8 @@ import { BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 const NavbarPrivateButtons = ({ user }) => {
-  const userId = user && [user].length > 0 && user.id;
+  let userId;
+  user && [user].length > 0 ? (userId = user.id) : null;
 
   return (
     <div className="flex gap-10 lg:gap-5">
