@@ -9,14 +9,12 @@ import TitleOne from '../components/Titles.jsx/TitleOne';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { token, saveToken, user, saveUser } = useContext(AuthContext);
+  const { token, saveToken, user } = useContext(AuthContext);
   const [email, setEmail] = useState('test2@gmail.com');
   const [password, setPassword] = useState('12345678');
 
-  console.log(user);
-
   useEffect(() => {
-    if (token && user) {
+    if (token && user && user.status !== 500) {
       navigate('/');
     }
   }, [token, user, navigate]);

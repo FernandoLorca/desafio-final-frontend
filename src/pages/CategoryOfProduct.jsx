@@ -4,17 +4,17 @@ import { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../context/AuthContext';
 
-import Navbar from '../components/Navbar/Navbar';
-import NavbarListMobile from '../components/Navbar/NavbarListMobile';
 import ProductsPerCategory from '../components/Products/ProductsPerCategory';
 import Footer from '../components/Footer/Footer';
 import TitleOne from '../components/Titles.jsx/TitleOne';
+import NavbarMain from '../components/Navbar/NavbarMain';
 
 const CategoryOfProduct = () => {
-  const { token, getUser, user } = useContext(AuthContext);
-  let { category } = useParams();
+  const { user } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
-  const [menu, setMenu] = useState(false);
+  let { category } = useParams();
+
+  console.log(category);
 
   switch (category) {
     case 'ssd-y-hdd':
@@ -28,11 +28,10 @@ const CategoryOfProduct = () => {
       break;
   }
 
-  const getVideoCards = async () => {
+  const getProductsData = async () => {
     try {
       const res = await fetch(
-        import.meta.env.VITE_API_URL +
-          `/products/category/${category}?limit=100`
+        import.meta.env.VITE_API_URL + `/products/category/${category}?limit=40`
       );
       const data = await res.json();
       setProducts(data);
@@ -43,14 +42,13 @@ const CategoryOfProduct = () => {
   };
 
   useEffect(() => {
-    getVideoCards();
-  }, []);
+    getProductsData();
+  }, [category]);
 
   const displayTitle = category => {
     const title =
       category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
 
-    console.log(title);
     if (title === 'Placas madre') return title;
 
     if (title === 'Discos') return 'Ssd y Hdd';
@@ -71,19 +69,7 @@ const CategoryOfProduct = () => {
 
   return (
     <>
-      <div className="bg-primary-800 px-5 py-2 text-dark-200">
-        <Navbar
-          onClick={() => setMenu(!menu)}
-          menu={menu}
-          user={user && [user].length > 0 && user}
-        />
-        <div className="relative z-20">
-          <NavbarListMobile
-            menu={menu}
-            user={user && [user].length > 0 && user}
-          />
-        </div>
-      </div>
+      <NavbarMain user={user} />
       <div className="pt-10 text-center">
         <TitleOne
           title={displayTitle(category)}

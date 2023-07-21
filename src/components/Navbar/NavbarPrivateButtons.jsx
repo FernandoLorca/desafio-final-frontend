@@ -1,7 +1,10 @@
-import { BsFillCartFill, BsFillPersonFill } from 'react-icons/bs';
-import Link from '../Buttons/Link';
+import { BsFillCartFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
-const NavbarPrivateButtons = () => {
+const NavbarPrivateButtons = ({ user }) => {
+  let userId;
+  user && [user].length > 0 ? (userId = user.id) : null;
+
   return (
     <div className="flex gap-10 lg:gap-5">
       <a
@@ -16,11 +19,11 @@ const NavbarPrivateButtons = () => {
         </div>
       </a>
       <div className="flex items-center">
-        <Link
-          text="Mi perfil"
-          href="#"
-          fontSize="text-x lg:text-md"
-        />
+        <div className="hover:text-primary-500 hover:underline">
+          <Link to={`/perfil/${user && [user].length > 0 && userId}`}>
+            Mi perfil
+          </Link>
+        </div>
       </div>
     </div>
   );

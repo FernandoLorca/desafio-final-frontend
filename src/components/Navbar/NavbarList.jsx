@@ -8,7 +8,7 @@ const NavbarList = () => {
   return (
     <nav className="hidden px-5 lg:block">
       <ul className="text flex gap-5">
-        <li className="flex items-center text-sm">
+        <li className="flex items-center text-sm hover:underline">
           <Link to="/">Inicio</Link>
         </li>
         {categories.map(category => (

@@ -8,7 +8,7 @@ const Categorie = ({ title, categorie }) => {
     <div
       className={`relative h-full w-full rounded-xl bg-dark-200 lg:max-w-[10rem] lg:cursor-pointer lg:transition lg:hover:scale-105`}
     >
-      <Link to={path}>
+      <Link to={`/category/${path}`}>
         <img
           className="absolute z-10 h-full w-full rounded-xl object-cover"
           src={img}

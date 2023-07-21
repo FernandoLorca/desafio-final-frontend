@@ -1,10 +1,12 @@
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import CategoryOfProduct from './pages/CategoryOfProduct';
+import Profile from './pages/Profile';
+import ProfileEdit from './pages/ProfileEdit';
 
 const App = () => {
   return (
@@ -22,8 +24,16 @@ const App = () => {
         element={<Register />}
       />
       <Route
-        path="/:category"
+        path="/category/:category"
         element={<CategoryOfProduct />}
+      />
+      <Route
+        path="/perfil/:id"
+        element={<Profile />}
+      />
+      <Route
+        path="/perfil/:id/editar-perfil"
+        element={<ProfileEdit />}
       />
       <Route
         path="*"

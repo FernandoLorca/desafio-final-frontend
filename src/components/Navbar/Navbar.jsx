@@ -15,7 +15,7 @@ const Navbar = ({ onClick, menu, user }) => {
       <NavbarList />
       {user && [user].length > 0 ? (
         <div className="hidden lg:block">
-          <NavbarPrivateButtons />
+          <NavbarPrivateButtons user={user} />
         </div>
       ) : (
         <NavbarPublicButtons />
