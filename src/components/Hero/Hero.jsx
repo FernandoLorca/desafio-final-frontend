@@ -7,6 +7,7 @@ import ButtonCta from '../Buttons/ButtonCta';
 import Navbar from '../Navbar/Navbar';
 import NavbarListMobile from '../Navbar/NavbarListMobile';
 import HeroText from './HeroText';
+import { Link } from 'react-router-dom';
 
 const Hero = ({
   heroBackground,
@@ -54,10 +55,12 @@ const Hero = ({
             />
           </div>
           <div className="block w-full md:w-1/3 lg:w-1/5">
-            <ButtonCta
-              text="Registrate"
-              textSize={`text-lg ${displayButton}`}
-            />
+            <Link to="/register">
+              <ButtonCta
+                text="Registrate"
+                textSize={`text-lg ${displayButton}`}
+              />
+            </Link>
           </div>
         </div>
       </div>

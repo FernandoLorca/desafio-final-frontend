@@ -4,6 +4,7 @@ import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 import ButtonCta from '../components/Buttons/ButtonCta';
+import ButtonLink from '../components/Buttons/ButtonLink';
 import Logo from '../components/Logo';
 import TitleOne from '../components/Titles.jsx/TitleOne';
 
@@ -78,10 +79,14 @@ const Login = () => {
               value={password}
             />
           </div>
-          <div className="lg:w-1/4">
+          <div className="flex items-center gap-5 lg:w-1/4">
             <ButtonCta
               text="Ingresar"
               type="submit"
+            />
+            <ButtonLink
+              text="Volver"
+              href="/"
             />
           </div>
         </form>

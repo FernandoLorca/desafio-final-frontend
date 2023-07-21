@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ButtonCta from '../components/Buttons/ButtonCta';
 import Logo from '../components/Logo';
 import TitleOne from '../components/Titles.jsx/TitleOne';
+import ButtonLink from '../components/Buttons/ButtonLink';
 
 const Register = () => {
   const [newUser, setNewUser] = useState({
@@ -203,11 +204,10 @@ const Register = () => {
               text="Registrarse"
               type="submit"
             />
-            <Link to="/">
-              <button className="text-sm text-primary-500 hover:underline">
-                Volver
-              </button>
-            </Link>
+            <ButtonLink
+              text="Volver"
+              href="/"
+            />
           </div>
         </form>
       </div>

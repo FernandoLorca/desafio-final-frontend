@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import AuthProvider from '../context/AuthContext';
 
 import Hero from '../components/Hero/Hero';
-import NavbarPublicButtons from '../components/Navbar/NavbarPublicButtons';
 import Categories from '../components/Categories/Categories';
 import Products from '../components/Products/Products';
 import Footer from '../components/Footer/Footer';

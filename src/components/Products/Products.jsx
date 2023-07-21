@@ -39,69 +39,13 @@ const Products = ({ title, products }) => {
           pagination={false}
           modules={[FreeMode]}
         >
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Product
-              img="/categories/video.webp"
-              productTitle="Nvidia RTX 3080"
-              price="$699.900"
-            />
-          </SwiperSlide>
+          {products &&
+            products.length > 0 &&
+            productData.map((product, i) => (
+              <SwiperSlide key={i}>
+                <Product item={product} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
       <div className="hidden px-20 lg:block">

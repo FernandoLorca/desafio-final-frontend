@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom';
+
 const ButtonLink = ({ text, href, fontSize }) => {
   return (
     <div>
-      <a
-        href={href}
+      <Link
+        to={href}
         className={`underline hover:text-primary-500 ${fontSize}`}
       >
         {text}
-      </a>
+      </Link>
     </div>
   );
 };

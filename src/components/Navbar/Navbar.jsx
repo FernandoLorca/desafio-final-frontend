@@ -1,4 +1,5 @@
 import { BsList, BsXLg } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 import NavbarList from './NavbarList';
 import NavbarPublicButtons from './NavbarPublicButtons';
@@ -7,11 +8,13 @@ import NavbarPrivateButtons from './NavbarPrivateButtons';
 const Navbar = ({ onClick, menu, user }) => {
   return (
     <div className="flex items-center justify-between md:px-16">
-      <img
-        src="/logo.svg"
-        alt="Logo"
-        className="w-16 md:w-10"
-      />
+      <Link to="/">
+        <img
+          src="/logo.svg"
+          alt="Logo"
+          className="w-16 md:w-10"
+        />
+      </Link>
       <NavbarList />
       {user && [user].length > 0 ? (
         <div className="hidden lg:block">
