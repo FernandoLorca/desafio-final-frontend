@@ -9,7 +9,7 @@ const NavbarListItem = ({ text, category, currentPath }) => {
   return (
     <Link
       className={`hover:underline ${isActive ? 'underline' : ''}`}
-      to={`/${path}`}
+      to={`/category/${path}`}
     >
       {text}
     </Link>

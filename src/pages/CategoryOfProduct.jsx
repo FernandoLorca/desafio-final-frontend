@@ -11,8 +11,10 @@ import NavbarMain from '../components/Navbar/NavbarMain';
 
 const CategoryOfProduct = () => {
   const { user } = useContext(AuthContext);
-  let { category } = useParams();
   const [products, setProducts] = useState([]);
+  let { category } = useParams();
+
+  console.log(category);
 
   switch (category) {
     case 'ssd-y-hdd':
@@ -26,11 +28,10 @@ const CategoryOfProduct = () => {
       break;
   }
 
-  const getVideoCards = async () => {
+  const getProductsData = async () => {
     try {
       const res = await fetch(
-        import.meta.env.VITE_API_URL +
-          `/products/category/${category}?limit=100`
+        import.meta.env.VITE_API_URL + `/products/category/${category}?limit=40`
       );
       const data = await res.json();
       setProducts(data);
@@ -41,14 +42,13 @@ const CategoryOfProduct = () => {
   };
 
   useEffect(() => {
-    getVideoCards();
-  }, []);
+    getProductsData();
+  }, [category]);
 
   const displayTitle = category => {
     const title =
       category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
 
-    console.log(title);
     if (title === 'Placas madre') return title;
 
     if (title === 'Discos') return 'Ssd y Hdd';

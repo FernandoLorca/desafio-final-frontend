@@ -20,7 +20,9 @@ const NavbarPrivateButtons = ({ user }) => {
       </a>
       <div className="flex items-center">
         <div className="hover:text-primary-500 hover:underline">
-          <Link to={`/perfil/${userId}`}>Mi perfil</Link>
+          <Link to={`/perfil/${user && [user].length > 0 && userId}`}>
+            Mi perfil
+          </Link>
         </div>
       </div>
     </div>
