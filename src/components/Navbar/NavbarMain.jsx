@@ -15,6 +15,7 @@ const NavbarMain = ({ user }) => {
       <div className="relative z-20">
         <NavbarListMobile
           menu={menu}
+          setMenu={setMenu}
           user={user && [user].length > 0 && user}
         />
       </div>

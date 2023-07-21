@@ -17,7 +17,7 @@ const Profile = () => {
 
   return (
     <>
-      <NavbarMain />
+      <NavbarMain user={user} />
       <div className="px-5 py-5 md:px-20">
         <ul className="text-center">
           <li className="mb-3">
