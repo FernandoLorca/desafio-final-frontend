@@ -13,6 +13,8 @@ const ProductPage = () => {
   const { product, category, setProductId } = useContext(ProductsContext);
   const { id } = useParams();
 
+  console.log(category);
+
   let categoryFromContext;
   switch (category) {
     case 'discos':
@@ -24,6 +26,9 @@ const ProductPage = () => {
     case 'tarjetas-video':
       categoryFromContext = 'Tarjetas de video';
       break;
+    default:
+      categoryFromContext =
+        category.charAt(0).toUpperCase() + category.slice(1);
   }
 
   useEffect(() => {
@@ -45,27 +50,37 @@ const ProductPage = () => {
     }
   };
   const formattedPrice = product && product.price && formatPrice(product.price);
-
   return (
     <>
       <NavbarMain />
-      <div>
-        <img
-          src={product.image_url}
-          alt=""
+      <div className="m-5 rounded-xl border-2 border-dark-100 p-5 md:m-auto md:my-10 md:max-w-lg">
+        <div className="flex justify-center">
+          <img
+            src={product.image_url}
+            alt=""
+            className="w-full max-w-[14rem]"
+          />
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="text-primary-600">
+            <TitleOne
+              title={product && [product].length > 0 && product.product_name}
+              classProperty="text-3xl text-center mt-5"
+            />
+          </div>
+          <p>
+            Categoría: {product && [product].length > 0 && categoryFromContext}
+          </p>
+          <p>Stock: {product && [product].length > 0 && product.stock}</p>
+        </div>
+        <TitleTwo
+          title={formattedPrice}
+          textSize="text-center text-4xl mt-5 text-secondary-700"
         />
+        <div className="px-5">
+          <ButtonCta text="Comprar" />
+        </div>
       </div>
-      <div>
-        <TitleOne
-          title={product && [product].length > 0 && product.product_name}
-        />
-        <p>
-          Categoría: {product && [product].length > 0 && categoryFromContext}
-        </p>
-        <p>Stock: {product && [product].length > 0 && product.stock}</p>
-      </div>
-      <TitleTwo title={formattedPrice} />
-      <ButtonCta text="Comprar" />
       <Footer />
     </>
   );
