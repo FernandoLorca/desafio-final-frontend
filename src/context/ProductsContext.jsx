@@ -6,6 +6,8 @@ export const ProductsContext = createContext();
 const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('');
+  const [product, setProduct] = useState([]);
+  const [productId, setProductId] = useState(null);
 
   switch (category) {
     case 'ssd-y-hdd':
@@ -39,8 +41,29 @@ const ProductsProvider = ({ children }) => {
     getProductsData();
   }, [category]);
 
+  const getProductData = async () => {
+    try {
+      if (productId && [productId].length > 0) {
+        const res = await fetch(
+          import.meta.env.VITE_API_URL + `/products/${productId}`
+        );
+        const data = await res.json();
+        setProduct(data);
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    getProductData();
+  }, [productId]);
+
   return (
-    <ProductsContext.Provider value={{ products, setCategory, category }}>
+    <ProductsContext.Provider
+      value={{ products, setCategory, category, product, setProductId }}
+    >
       {children}
     </ProductsContext.Provider>
   );

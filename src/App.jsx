@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import CategoryOfProduct from './pages/CategoryOfProduct';
-import ProductPAge from './pages/ProductPage';
+import ProductPage from './pages/ProductPage';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 
@@ -35,8 +35,12 @@ const App = () => {
         }
       />
       <Route
-        path="/category/:category/:name"
-        element={<ProductPAge />}
+        path="/category/:category/:id"
+        element={
+          <ProductsProvider>
+            <ProductPage />
+          </ProductsProvider>
+        }
       />
       <Route
         path="/perfil/:id"
