@@ -16,7 +16,7 @@ const Navbar = ({ onClick, menu, user }) => {
         />
       </Link>
       <NavbarList />
-      {user && [user].length > 0 ? (
+      {user && user.status !== 500 && [user].length > 0 ? (
         <div className="hidden lg:block">
           <NavbarPrivateButtons user={user} />
         </div>
