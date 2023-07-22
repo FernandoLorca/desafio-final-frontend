@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import ProductPerCategory from './ProductPerCategory';
 
-const ProductsPerCategory = ({ title, products }) => {
+const ProductsPerCategory = ({ products, category }) => {
   const [detailedProducts, setDetailedProducts] = useState([]);
 
   useEffect(() => {
@@ -27,6 +27,8 @@ const ProductsPerCategory = ({ title, products }) => {
         title={product.product_name}
         price={product.price}
         img={product.image_url}
+        id={product.id}
+        category={category}
       />
     </div>
   ));

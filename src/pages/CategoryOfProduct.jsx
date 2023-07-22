@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { AuthContext } from '../context/AuthContext';
+import { ProductsContext } from '../context/ProductsContext';
 
 import ProductsPerCategory from '../components/Products/ProductsPerCategory';
 import Footer from '../components/Footer/Footer';
@@ -11,39 +12,12 @@ import NavbarMain from '../components/Navbar/NavbarMain';
 
 const CategoryOfProduct = () => {
   const { user } = useContext(AuthContext);
-  const [products, setProducts] = useState([]);
-  let { category } = useParams();
-
-  console.log(category);
-
-  switch (category) {
-    case 'ssd-y-hdd':
-      category = 'discos';
-      break;
-    case 'fuentes-de-poder':
-      category = 'fuentes-poder';
-      break;
-    case 'tarjetas-de-video':
-      category = 'tarjetas-video';
-      break;
-  }
-
-  const getProductsData = async () => {
-    try {
-      const res = await fetch(
-        import.meta.env.VITE_API_URL + `/products/category/${category}?limit=40`
-      );
-      const data = await res.json();
-      setProducts(data);
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
-  };
+  const { products, setCategory, category } = useContext(ProductsContext);
+  const params = useParams();
 
   useEffect(() => {
-    getProductsData();
-  }, [category]);
+    setCategory(params.category);
+  }, [params]);
 
   const displayTitle = category => {
     const title =
@@ -79,8 +53,8 @@ const CategoryOfProduct = () => {
       <div className="grid grid-cols-2 gap-5 px-5 py-10 md:grid-cols-3 md:px-20">
         {products && products.length > 0 && (
           <ProductsPerCategory
-            title="Tarjetas de video"
             products={products}
+            category={category}
           />
         )}
       </div>
