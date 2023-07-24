@@ -5,8 +5,8 @@ import { ProductsContext } from '../context/ProductsContext';
 
 import NavbarMain from '../components/Navbar/NavbarMain';
 import Footer from '../components/Footer/Footer';
-import TitleOne from '../components/Titles.jsx/TitleOne';
-import TitleTwo from '../components/Titles.jsx/TitleTwo';
+import TitleOne from '../components/Titles/TitleOne';
+import TitleTwo from '../components/Titles/TitleTwo';
 import ButtonCta from '../components/Buttons/ButtonCta';
 
 const ProductPage = () => {

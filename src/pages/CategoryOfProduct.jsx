@@ -7,7 +7,7 @@ import { ProductsContext } from '../context/ProductsContext';
 
 import ProductsPerCategory from '../components/Products/ProductsPerCategory';
 import Footer from '../components/Footer/Footer';
-import TitleOne from '../components/Titles.jsx/TitleOne';
+import TitleOne from '../components/Titles/TitleOne';
 import NavbarMain from '../components/Navbar/NavbarMain';
 
 const CategoryOfProduct = () => {

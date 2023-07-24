@@ -3,10 +3,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 import NavbarMain from '../components/Navbar/NavbarMain';
-import TitleOne from '../components/Titles.jsx/TitleOne';
-import TitleTwo from '../components/Titles.jsx/TitleTwo';
+import TitleOne from '../components/Titles/TitleOne';
+import TitleTwo from '../components/Titles/TitleTwo';
 import Footer from '../components/Footer/Footer';
-import ButtonLink from '../components/Buttons/ButtonLink';
 import { Link } from 'react-router-dom';
 
 const Profile = () => {

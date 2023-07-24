@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import ButtonCta from '../components/Buttons/ButtonCta';
 import Logo from '../components/Logo';
-import TitleOne from '../components/Titles.jsx/TitleOne';
+import TitleOne from '../components/Titles/TitleOne';
 import ButtonLink from '../components/Buttons/ButtonLink';
 
 const Register = () => {

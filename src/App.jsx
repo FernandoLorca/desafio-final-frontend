@@ -10,6 +10,7 @@ import CategoryOfProduct from './pages/CategoryOfProduct';
 import ProductPage from './pages/ProductPage';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
+import Cart from './pages/Cart';
 
 const App = () => {
   return (
@@ -45,6 +46,10 @@ const App = () => {
       <Route
         path="/perfil/:id"
         element={<Profile />}
+      />
+      <Route
+        path="/carrito"
+        element={<Cart />}
       />
       <Route
         path="/perfil/:id/editar-perfil"

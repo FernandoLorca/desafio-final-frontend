@@ -8,6 +8,7 @@ const initialStateToken = localStorage.getItem('token');
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(initialStateToken);
   const [user, setUser] = useState(null);
+  const [userLoaded, setUserLoaded] = useState(false);
 
   const saveToken = accessToken => {
     setToken(accessToken);
@@ -26,6 +27,7 @@ const AuthProvider = ({ children }) => {
       });
       const data = await res.json();
       saveUser(data);
+      setUserLoaded(true);
     } catch (error) {
       console.error(error);
     }
@@ -52,6 +54,7 @@ const AuthProvider = ({ children }) => {
         saveUser,
         getUser,
         logOut,
+        userLoaded,
       }}
     >
       {children}

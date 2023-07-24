@@ -33,6 +33,7 @@ const Hero = ({
           onClick={() => setMenu(!menu)}
           menu={menu}
           user={user && [user].length > 0 && user}
+          token={token}
         />
       </div>
       <div className="absolute z-10 h-full w-full bg-dark-900 opacity-70"></div>
