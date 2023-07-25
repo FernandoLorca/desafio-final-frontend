@@ -1,12 +1,38 @@
+import { Link } from 'react-router-dom';
+
 import ProductTitle from './ProductTitle';
 import ProductPrice from './ProductPrice';
-import Link from '../Buttons/ButtonLink';
 
 const Product = ({ item }) => {
   let productItem;
+  let category;
 
   if (item && [item].length > 0) {
     productItem = item;
+  }
+
+  switch (item.category_id) {
+    case 1:
+      category = 'placas-madre';
+      break;
+    case 2:
+      category = 'ram';
+      break;
+    case 3:
+      category = 'discos';
+      break;
+    case 4:
+      category = 'gabinetes';
+      break;
+    case 5:
+      category = 'fuentes-poder';
+      break;
+    case 6:
+      category = 'tarjetas-video';
+      break;
+    case 7:
+      category = 'procesadores';
+      break;
   }
 
   return (
@@ -18,15 +44,13 @@ const Product = ({ item }) => {
           className="max-h-[10rem] rounded-xl"
         />
       </div>
-      <ProductTitle
-        productTitle={item && [item].length > 0 && productItem.product_name}
-      />
+      <Link to={`/category/${category}/${item.id}`}>
+        <ProductTitle
+          productTitle={item && [item].length > 0 && productItem.product_name}
+          extraClasses="text-primary-600"
+        />
+      </Link>
       <ProductPrice price={item && [item].length > 0 && productItem.price} />
-      <Link
-        text="Comprar"
-        href="#"
-        fontSize="text-md"
-      />
     </div>
   );
 };

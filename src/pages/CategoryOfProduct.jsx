@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react';
 
 import { AuthContext } from '../context/AuthContext';
 import { ProductsContext } from '../context/ProductsContext';
+import CartProvider from '../context/CartContext';
 
 import ProductsPerCategory from '../components/Products/ProductsPerCategory';
 import Footer from '../components/Footer/Footer';
@@ -51,12 +52,14 @@ const CategoryOfProduct = () => {
         />
       </div>
       <div className="grid grid-cols-2 gap-5 px-5 py-10 md:grid-cols-3 md:px-20">
-        {products && products.length > 0 && (
-          <ProductsPerCategory
-            products={products}
-            category={category}
-          />
-        )}
+        <CartProvider>
+          {products && products.length > 0 && (
+            <ProductsPerCategory
+              products={products}
+              category={category}
+            />
+          )}
+        </CartProvider>
       </div>
       <div className="-mt-10">
         <Footer />

@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import ProductsProvider from './context/ProductsContext';
+import CartProvider from './context/CartContext';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -39,7 +40,9 @@ const App = () => {
         path="/category/:category/:id"
         element={
           <ProductsProvider>
-            <ProductPage />
+            <CartProvider>
+              <ProductPage />
+            </CartProvider>
           </ProductsProvider>
         }
       />
@@ -49,7 +52,11 @@ const App = () => {
       />
       <Route
         path="/carrito"
-        element={<Cart />}
+        element={
+          <CartProvider>
+            <Cart />
+          </CartProvider>
+        }
       />
       <Route
         path="/perfil/:id/editar-perfil"
