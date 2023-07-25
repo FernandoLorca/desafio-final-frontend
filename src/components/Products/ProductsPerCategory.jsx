@@ -1,7 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+
+import { CartContext } from '../../context/CartContext';
+
 import ProductPerCategory from './ProductPerCategory';
 
 const ProductsPerCategory = ({ products, category }) => {
+  const { setProductBuy } = useContext(CartContext);
   const [detailedProducts, setDetailedProducts] = useState([]);
 
   useEffect(() => {
@@ -21,6 +25,7 @@ const ProductsPerCategory = ({ products, category }) => {
     fetchDetailedProducts();
   }, [products]);
 
+  console.log(detailedProducts);
   return detailedProducts.map((product, i) => (
     <div key={i}>
       <ProductPerCategory
@@ -29,6 +34,7 @@ const ProductsPerCategory = ({ products, category }) => {
         img={product.image_url}
         id={product.id}
         category={category}
+        addToCart={() => setProductBuy(product)}
       />
     </div>
   ));

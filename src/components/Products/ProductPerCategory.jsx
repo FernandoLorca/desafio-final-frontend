@@ -1,14 +1,13 @@
 import ProductTitleLink from './ProductTitleLink';
 import ProductPrice from './ProductPrice';
-import Link from '../Buttons/ButtonLink';
 
-const ProductPerCategory = ({ title, price, img, id, category }) => {
+const ProductPerCategory = ({ title, price, img, id, category, addToCart }) => {
   return (
     <div className="grid h-full content-around justify-items-center">
       <div className="mb-2 flex max-h-[10rem] min-h-[10rem] w-full max-w-[10rem] items-center justify-center rounded-xl border-2 border-dark-100 p-6">
         <img
           src={img}
-          alt=""
+          alt={title}
           className="max-h-[10rem] rounded-xl"
         />
       </div>
@@ -18,11 +17,13 @@ const ProductPerCategory = ({ title, price, img, id, category }) => {
         href={`/category/${category}/${id}`}
       />
       <ProductPrice price={price} />
-      <Link
-        text="Comprar"
+      <a
         href="#"
-        fontSize="text-md"
-      />
+        className="underline hover:text-primary-500"
+        onClick={addToCart}
+      >
+        Comprar
+      </a>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import TitleTwo from '../Titles.jsx/TitleTwo';
+import TitleTwo from '../Titles/TitleTwo';
 import Categorie from './Categorie';
 import categories from '../Categories/categories.json';
 

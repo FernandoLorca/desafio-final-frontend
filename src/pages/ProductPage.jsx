@@ -1,19 +1,21 @@
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { AuthContext } from '../context/AuthContext';
 import { ProductsContext } from '../context/ProductsContext';
+import { CartContext } from '../context/CartContext';
 
 import NavbarMain from '../components/Navbar/NavbarMain';
 import Footer from '../components/Footer/Footer';
-import TitleOne from '../components/Titles.jsx/TitleOne';
-import TitleTwo from '../components/Titles.jsx/TitleTwo';
+import TitleOne from '../components/Titles/TitleOne';
+import TitleTwo from '../components/Titles/TitleTwo';
 import ButtonCta from '../components/Buttons/ButtonCta';
 
 const ProductPage = () => {
+  const { user } = useContext(AuthContext);
   const { product, category, setProductId } = useContext(ProductsContext);
+  const { setProductBuy } = useContext(CartContext);
   const { id } = useParams();
-
-  console.log(category);
 
   let categoryFromContext;
   switch (category) {
@@ -52,7 +54,7 @@ const ProductPage = () => {
   const formattedPrice = product && product.price && formatPrice(product.price);
   return (
     <>
-      <NavbarMain />
+      <NavbarMain user={user} />
       <div className="m-5 rounded-xl border-2 border-dark-100 p-5 md:m-auto md:my-10 md:max-w-lg">
         <div className="flex justify-center">
           <img
@@ -74,11 +76,16 @@ const ProductPage = () => {
           <p>Stock: {product && [product].length > 0 && product.stock}</p>
         </div>
         <TitleTwo
-          title={formattedPrice}
+          title={`$${formattedPrice}`}
           textSize="text-center text-4xl mt-5 text-secondary-700"
         />
         <div className="px-5">
-          <ButtonCta text="Comprar" />
+          <ButtonCta
+            text="Comprar"
+            onclick={() => {
+              setProductBuy(product);
+            }}
+          />
         </div>
       </div>
       <Footer />

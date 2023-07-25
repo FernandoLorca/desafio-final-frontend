@@ -7,7 +7,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import Product from './Product';
-import TitleTwo from '../Titles.jsx/TitleTwo';
+import TitleTwo from '../Titles/TitleTwo';
 
 const Products = ({ title, products }) => {
   const [productData, setProductData] = useState([]);

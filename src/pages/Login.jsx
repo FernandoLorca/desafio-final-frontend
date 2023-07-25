@@ -6,7 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 import ButtonCta from '../components/Buttons/ButtonCta';
 import ButtonLink from '../components/Buttons/ButtonLink';
 import Logo from '../components/Logo';
-import TitleOne from '../components/Titles.jsx/TitleOne';
+import TitleOne from '../components/Titles/TitleOne';
 
 const Login = () => {
   const navigate = useNavigate();

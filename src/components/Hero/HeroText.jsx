@@ -1,4 +1,4 @@
-import TitleOne from '../Titles.jsx/TitleOne';
+import TitleOne from '../Titles/TitleOne';
 
 const HeroText = ({ title, subTitle }) => {
   return (

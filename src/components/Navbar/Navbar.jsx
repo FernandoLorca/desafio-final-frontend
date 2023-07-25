@@ -1,11 +1,20 @@
 import { BsList, BsXLg } from 'react-icons/bs';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import { AuthContext } from '../../context/AuthContext';
 
 import NavbarList from './NavbarList';
 import NavbarPublicButtons from './NavbarPublicButtons';
 import NavbarPrivateButtons from './NavbarPrivateButtons';
 
 const Navbar = ({ onClick, menu, user }) => {
+  const { userLoaded } = useContext(AuthContext);
+
+  if (!userLoaded) {
+    <div>Cargando...</div>;
+  }
+
   return (
     <div className="flex items-center justify-between md:px-16">
       <Link to="/">

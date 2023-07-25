@@ -3,11 +3,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 import NavbarMain from '../components/Navbar/NavbarMain';
-import TitleOne from '../components/Titles.jsx/TitleOne';
-import TitleTwo from '../components/Titles.jsx/TitleTwo';
+import TitleOne from '../components/Titles/TitleOne';
+import TitleTwo from '../components/Titles/TitleTwo';
 import Footer from '../components/Footer/Footer';
-import ButtonLink from '../components/Buttons/ButtonLink';
-import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -16,52 +14,32 @@ const Profile = () => {
   user && [user].length > 0 && (email = user.email);
 
   return (
-    <>
+    <div className="flex h-screen flex-col">
       <NavbarMain user={user} />
-      <div className="px-5 py-5 md:px-20">
-        <ul className="text-center">
-          <li className="mb-3">
-            <TitleOne
-              title="Perfil"
-              classProperty="mb-0 text-2xl"
-            />
-            <p>Usuario</p>
-          </li>
-          <li className="mb-3">
-            <TitleTwo
-              title="Nombre"
-              textSize="mb-0"
-            />
-            <p>Agregar información</p>
-          </li>
-          <li className="mb-3">
-            <TitleTwo
-              title="Email"
-              textSize="mb-0"
-            />
-            <p>{email}</p>
-          </li>
-          <li className="mb-3">
-            <TitleTwo
-              title="Número de teléfono"
-              textSize="mb-0"
-            />
-            <p>Agregar información</p>
-          </li>
-        </ul>
-        <div className="py-2 text-center">
-          <Link
-            to={`/perfil/${user && [user].length > 0 && user.id}/editar-perfil`}
-            className={'text-2xl underline hover:text-primary-500 lg:text-lg'}
-          >
-            Editar perfil
-          </Link>
+      <div className="m-5 flex flex-grow justify-center">
+        <div className="flex w-full max-w-sm items-center justify-center rounded-lg border-2 border-dark-200 md:px-20">
+          <ul className="text-center">
+            <li className="mb-3">
+              <TitleOne
+                title="Tipo de cuenta:"
+                classProperty="mb-1 text-2xl"
+              />
+              <p>{user.role === 'user' ? 'Usuario' : 'Administrador'}</p>
+            </li>
+            <li className="mb-3">
+              <TitleTwo
+                title="Email"
+                textSize="mb-1"
+              />
+              <p>{email}</p>
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="-mt-10">
+      <div className="-mt-5">
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 
