@@ -1,9 +1,8 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { AuthContext } from '../context/AuthContext';
 import { ProductsContext } from '../context/ProductsContext';
-import { CartContext } from '../context/CartContext';
 
 import NavbarMain from '../components/Navbar/NavbarMain';
 import Footer from '../components/Footer/Footer';
@@ -12,9 +11,9 @@ import TitleTwo from '../components/Titles/TitleTwo';
 import ButtonCta from '../components/Buttons/ButtonCta';
 
 const ProductPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const { product, category, setProductId } = useContext(ProductsContext);
-  const { setProductBuy } = useContext(CartContext);
+  const [showBuyMessage, setShowBuyMessage] = useState(false);
   const { id } = useParams();
 
   let categoryFromContext;
@@ -52,6 +51,34 @@ const ProductPage = () => {
     }
   };
   const formattedPrice = product && product.price && formatPrice(product.price);
+
+  const handleBuy = async product => {
+    try {
+      await fetch(import.meta.env.VITE_API_URL + '/cart/', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          product: [
+            {
+              product_id: product.id,
+              quantity: 1,
+            },
+          ],
+        }),
+      });
+      setShowBuyMessage(true);
+      setTimeout(() => {
+        setShowBuyMessage(false);
+      }, 5000);
+    } catch (error) {
+      console.error(error);
+      setShowBuyMessage('Error al agregar el producto al carro');
+    }
+  };
+
   return (
     <>
       <NavbarMain user={user} />
@@ -83,10 +110,15 @@ const ProductPage = () => {
           <ButtonCta
             text="Comprar"
             onclick={() => {
-              setProductBuy(product);
+              handleBuy(product);
             }}
           />
         </div>
+        {showBuyMessage && (
+          <p className="mt-5 text-center text-secondary-700">
+            Producto agregado al carro
+          </p>
+        )}
       </div>
       <Footer />
     </>

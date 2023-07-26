@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(initialStateToken);
   const [user, setUser] = useState(null);
   const [userLoaded, setUserLoaded] = useState(false);
-  console.log(user);
+
   const saveToken = accessToken => {
     setToken(accessToken);
     localStorage.setItem('token', accessToken);
