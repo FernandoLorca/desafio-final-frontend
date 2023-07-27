@@ -8,7 +8,7 @@ const NavbarPrivateButtons = ({ user }) => {
   return (
     <div className="flex gap-10 lg:gap-5">
       <Link
-        to="/carrito"
+        to="/carro"
         className="flex items-center gap-2 hover:opacity-80"
       >
         <div className="flex h-12 w-12 items-center justify-center text-4xl lg:h-8 lg:w-8 lg:text-2xl">

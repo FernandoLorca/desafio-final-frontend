@@ -11,7 +11,7 @@ import CategoryOfProduct from './pages/CategoryOfProduct';
 import ProductPage from './pages/ProductPage';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
-import Cart from './pages/Cart';
+import CartPage from './pages/CartPage';
 
 const App = () => {
   return (
@@ -51,10 +51,10 @@ const App = () => {
         element={<Profile />}
       />
       <Route
-        path="/carrito"
+        path="/carro"
         element={
           <CartProvider>
-            <Cart />
+            <CartPage />
           </CartProvider>
         }
       />
