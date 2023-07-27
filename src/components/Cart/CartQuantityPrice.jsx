@@ -3,7 +3,7 @@ import CartTotalPrice from './CartTotalPrice';
 
 const CartQuantityPrice = ({
   quantity,
-  setQuantity,
+  updateQuantity,
   cartProduct,
   product,
   formatPrice,
@@ -12,7 +12,7 @@ const CartQuantityPrice = ({
     <div className="flex h-full w-24 flex-col gap-1">
       <CartQuantity
         quantity={quantity}
-        setQuantity={setQuantity}
+        updateQuantity={updateQuantity}
       />
       <CartTotalPrice
         cartProduct={cartProduct}

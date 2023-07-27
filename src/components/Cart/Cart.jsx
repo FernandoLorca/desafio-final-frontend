@@ -2,13 +2,7 @@ import CartImage from './CartImage';
 import CartTitlePrice from './CartTitlePrice';
 import CartQuantityPrice from './CartQuantityPrice';
 
-const Cart = ({
-  cartProduct,
-  formatPrice,
-  quantity,
-  setQuantity,
-  updateProductQuantity,
-}) => {
+const Cart = ({ cartProduct, formatPrice, updateProductQuantity }) => {
   return (
     <div className="flex flex-col gap-5">
       {cartProduct &&
@@ -28,8 +22,10 @@ const Cart = ({
               />
             </div>
             <CartQuantityPrice
-              quantity={quantity}
-              setQuantity={setQuantity}
+              quantity={product.product_quantity}
+              updateQuantity={newQuantity =>
+                updateProductQuantity(product.product_id, newQuantity)
+              }
               cartProduct={cartProduct}
               product={product}
               formatPrice={formatPrice}

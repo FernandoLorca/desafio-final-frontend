@@ -5,7 +5,6 @@ import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 
 import NavbarMain from '../components/Navbar/NavbarMain';
-import TitleTwo from '../components/Titles/TitleTwo';
 import Footer from '../components/Footer/Footer';
 import ButtonCta from '../components/Buttons/ButtonCta';
 import Cart from '../components/Cart/Cart';
@@ -35,8 +34,6 @@ const CartPage = () => {
     cartData();
   }, []);
 
-  console.log(cartProduct);
-
   const formatPrice = price => {
     const priceString = price.toString();
     const isGreaterThan1000000 = price >= 1000000;
@@ -57,6 +54,17 @@ const CartPage = () => {
     }
   };
 
+  const updateProductQuantity = (productId, newQuantity) => {
+    setCartProduct(prevCartProduct => ({
+      ...prevCartProduct,
+      product: prevCartProduct.product.map(product =>
+        product.product_id === productId
+          ? { ...product, quantity: newQuantity }
+          : product
+      ),
+    }));
+  };
+
   return (
     <>
       <NavbarMain user={user} />
@@ -65,8 +73,7 @@ const CartPage = () => {
           <Cart
             cartProduct={cartProduct}
             formatPrice={formatPrice}
-            quantity={quantity}
-            setQuantity={setQuantity}
+            updateProductQuantity={updateProductQuantity}
           />
           <div className="mt-5">
             <ButtonCta text="Finalizar Compra" />
