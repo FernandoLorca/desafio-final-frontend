@@ -10,25 +10,8 @@ import ButtonCta from '../components/Buttons/ButtonCta';
 import Cart from '../components/Cart/Cart';
 
 const CartPage = () => {
-  const { user, token } = useContext(AuthContext);
-  const { cartProduct, setCartProduct } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(1);
-
-  const cartData = async () => {
-    try {
-      const data = await fetch(import.meta.env.VITE_API_URL + '/cart/', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const cart = await data.json();
-      setCartProduct(cart);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { user } = useContext(AuthContext);
+  const { cartProduct, cartData } = useContext(CartContext);
 
   useEffect(() => {
     cartData();
@@ -54,17 +37,6 @@ const CartPage = () => {
     }
   };
 
-  const updateProductQuantity = (productId, newQuantity) => {
-    setCartProduct(prevCartProduct => ({
-      ...prevCartProduct,
-      product: prevCartProduct.product.map(product =>
-        product.product_id === productId
-          ? { ...product, quantity: newQuantity }
-          : product
-      ),
-    }));
-  };
-
   return (
     <>
       <NavbarMain user={user} />
@@ -73,7 +45,6 @@ const CartPage = () => {
           <Cart
             cartProduct={cartProduct}
             formatPrice={formatPrice}
-            updateProductQuantity={updateProductQuantity}
           />
           <div className="mt-5">
             <ButtonCta text="Finalizar Compra" />

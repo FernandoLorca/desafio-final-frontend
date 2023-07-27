@@ -1,36 +1,80 @@
-const CartQuantity = ({ quantity, updateQuantity }) => {
-  // Debo crear una función que se encargue de disminuir la cantidad de productos en el carrito. Se me ocurre que la cantidad que viene del back se guarde en un estado. Con este estado dismonuir o aumentar la cantidad y al mismo momento que se aumenta o disminuye se valla actualizando el carrito para que se valla mostrando la cantidad total.
-  // La cantidad que se muestra en el componente siempre es la cantidad real que viene desde el back y no la cantidad que se muestra en el estado. El estado lo uso solamente para realiar las operaciones de suma y resta.
+import {
+  BsFillCaretLeftFill,
+  BsFillCaretRightFill,
+  BsFillTrashFill,
+} from 'react-icons/bs';
+import { useContext, useState, useEffect } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
+import { CartContext } from '../../context/CartContext';
+
+const CartQuantity = ({ quantity, product }) => {
+  const { token } = useContext(AuthContext);
+  const { setVirtualQuantity } = useContext(CartContext);
+  const [localQuantity, setLocalQuantity] = useState(quantity);
+  useEffect(() => setLocalQuantity(quantity), [quantity]);
 
   const descreaseQuantity = () => {
-    console.log('Resta');
-    if (quantity > 1) {
-      updateQuantity(quantity - 1);
-    }
+    if (localQuantity <= 1) return;
+    setLocalQuantity(localQuantity - 1);
   };
 
   const increaseQuantity = () => {
-    console.log('Suma');
-    updateQuantity(quantity + 1);
+    setLocalQuantity(localQuantity + 1);
   };
+
+  useEffect(
+    () => setVirtualQuantity(localQuantity),
+    [localQuantity, setVirtualQuantity]
+  );
+
+  const removeFromCart = async () => {
+    try {
+      await fetch(import.meta.env.VITE_API_URL + '/cart/', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          product: [
+            {
+              product_id: product.product_id,
+              quantity: localQuantity,
+            },
+          ],
+        }),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleRemoveFromCart = () => removeFromCart(product.product_id);
 
   return (
     <div className="flex items-center justify-center gap-2">
-      <div
+      <button
         onClick={() => descreaseQuantity()}
-        className={`hover:text-white cursor-pointer rounded-full border border-dark-500 px-2 text-dark-500 hover:border-dark-100 hover:bg-dark-500 hover:text-dark-100 ${
-          quantity <= 1 && 'cursor-not-allowed'
+        className={`hover:text-white rounded-full border border-dark-500 p-1 text-dark-500 hover:border-dark-100 hover:bg-dark-500 hover:text-dark-100 ${
+          localQuantity <= 1 && 'cursor-not-allowed'
         }`}
       >
-        {'<'}
-      </div>
-      <p className="text-lg">{quantity}</p>
-      <div
+        <BsFillCaretLeftFill />
+      </button>
+      <p className="text-lg">{localQuantity}</p>
+      <button
         onClick={() => increaseQuantity()}
-        className="hover:text-white cursor-pointer rounded-full border border-dark-500 px-2 text-dark-500 hover:border-dark-100 hover:bg-dark-500 hover:text-dark-100"
+        className="hover:text-white cursor-pointer rounded-full border border-dark-500 p-1 text-dark-500 hover:border-dark-100 hover:bg-dark-500 hover:text-dark-100"
       >
-        {'>'}
-      </div>
+        <BsFillCaretRightFill />
+      </button>
+      <button
+        className="flex items-center justify-center text-primary-500"
+        onClick={handleRemoveFromCart}
+      >
+        <BsFillTrashFill />
+      </button>
     </div>
   );
 };

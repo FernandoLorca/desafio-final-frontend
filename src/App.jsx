@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
+import AuthProvider from './context/AuthContext';
 import ProductsProvider from './context/ProductsContext';
 import CartProvider from './context/CartContext';
 
@@ -39,11 +40,13 @@ const App = () => {
       <Route
         path="/category/:category/:id"
         element={
-          <ProductsProvider>
-            <CartProvider>
-              <ProductPage />
-            </CartProvider>
-          </ProductsProvider>
+          <AuthProvider>
+            <ProductsProvider>
+              <CartProvider>
+                <ProductPage />
+              </CartProvider>
+            </ProductsProvider>
+          </AuthProvider>
         }
       />
       <Route
