@@ -6,8 +6,9 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const { token } = useContext(AuthContext);
-  const [cartProduct, setCartProduct] = useState(null);
+  const [cartProduct, setCartProduct] = useState([]);
   const [virtualQuantity, setVirtualQuantity] = useState(null);
+  const [emptyCart, setEmptyCart] = useState(false);
 
   const cartData = async () => {
     try {
@@ -18,6 +19,7 @@ const CartProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      if (data.status === 200) setEmptyCart(true);
       const cart = await data.json();
       setCartProduct(cart);
     } catch (error) {
@@ -56,6 +58,7 @@ const CartProvider = ({ children }) => {
         setVirtualQuantity,
         cartData,
         buyHandler,
+        emptyCart,
       }}
     >
       {children}

@@ -1,17 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 
 import NavbarMain from '../components/Navbar/NavbarMain';
 import Footer from '../components/Footer/Footer';
-import ButtonCta from '../components/Buttons/ButtonCta';
 import Cart from '../components/Cart/Cart';
 
 const CartPage = () => {
   const { user } = useContext(AuthContext);
-  const { cartProduct, cartData } = useContext(CartContext);
+  const { cartProduct, cartData, emptyCart } = useContext(CartContext);
 
   useEffect(() => {
     cartData();
@@ -42,13 +41,18 @@ const CartPage = () => {
       <NavbarMain user={user} />
       <div className="flex h-screen justify-center">
         <div className="m-5 flex h-fit w-full flex-grow flex-col gap-5 rounded-xl border-2 border-dark-100 p-5 md:mx-16 lg:max-w-lg">
-          <Cart
-            cartProduct={cartProduct}
-            formatPrice={formatPrice}
-          />
-          <div className="mt-5">
-            <ButtonCta text="Finalizar Compra" />
-          </div>
+          {!emptyCart ? (
+            <div className="flex flex-col items-center justify-center gap-5">
+              <h1 className="text-4xl font-bold">Carrito vacío</h1>
+            </div>
+          ) : (
+            <>
+              <Cart
+                cartProduct={cartProduct}
+                formatPrice={formatPrice}
+              />
+            </>
+          )}
         </div>
       </div>
       <Footer />

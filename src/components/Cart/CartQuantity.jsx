@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   BsFillCaretLeftFill,
   BsFillCaretRightFill,
@@ -10,7 +11,7 @@ import { CartContext } from '../../context/CartContext';
 
 const CartQuantity = ({ quantity, product }) => {
   const { token } = useContext(AuthContext);
-  const { setVirtualQuantity } = useContext(CartContext);
+  const { setVirtualQuantity, cartData } = useContext(CartContext);
   const [localQuantity, setLocalQuantity] = useState(quantity);
   useEffect(() => setLocalQuantity(quantity), [quantity]);
 
@@ -45,12 +46,12 @@ const CartQuantity = ({ quantity, product }) => {
           ],
         }),
       });
+
+      cartData();
     } catch (error) {
       console.error(error);
     }
   };
-
-  const handleRemoveFromCart = () => removeFromCart(product.product_id);
 
   return (
     <div className="flex items-center justify-center gap-2">
@@ -70,8 +71,8 @@ const CartQuantity = ({ quantity, product }) => {
         <BsFillCaretRightFill />
       </button>
       <button
-        className="flex items-center justify-center text-primary-500"
-        onClick={handleRemoveFromCart}
+        className="flex items-center justify-center text-primary-500 hover:opacity-75"
+        onClick={removeFromCart}
       >
         <BsFillTrashFill />
       </button>
