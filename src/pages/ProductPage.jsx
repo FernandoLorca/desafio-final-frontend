@@ -38,9 +38,14 @@ const ProductPage = () => {
 
   const formatPrice = price => {
     const priceString = price.toString();
-    const isGreaterThan100000 = price >= 100000;
+    const isGreaterThan1000000 = price >= 1000000;
 
-    if (isGreaterThan100000) {
+    if (isGreaterThan1000000) {
+      const millions = priceString.slice(0, -6);
+      const thousands = priceString.slice(-6, -3);
+      const rest = priceString.slice(-3);
+      return `${millions}.${thousands}.${rest}`;
+    } else if (price >= 100000) {
       const thousands = priceString.slice(0, -3);
       const rest = priceString.slice(-3);
       return `${thousands}.${rest}`;
