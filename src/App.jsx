@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-// prueba
+
 
 import AuthProvider from './context/AuthContext';
 import ProductsProvider from './context/ProductsContext';
