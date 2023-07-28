@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { Link } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
 
 import { AuthContext } from '../../context/AuthContext';
@@ -7,7 +8,6 @@ import ButtonCta from '../Buttons/ButtonCta';
 import Navbar from '../Navbar/Navbar';
 import NavbarListMobile from '../Navbar/NavbarListMobile';
 import HeroText from './HeroText';
-import { Link } from 'react-router-dom';
 
 const Hero = ({
   heroBackground,

@@ -1,5 +1,8 @@
 import { BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+
+import { CartContext } from '../../context/CartContext';
 
 const NavbarPrivateButtons = ({ user }) => {
   let userId;
@@ -15,7 +18,7 @@ const NavbarPrivateButtons = ({ user }) => {
           <BsFillCartFill />
         </div>
         <div className="flex h-5 w-5 items-center justify-center rounded-full bg-dark-100 text-sm text-dark-800">
-          <p>3</p>
+          <p>0</p>
         </div>
       </Link>
       <div className="flex items-center">

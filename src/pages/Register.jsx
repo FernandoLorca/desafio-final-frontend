@@ -18,8 +18,6 @@ const Register = () => {
     formSubmitted: false,
   });
 
-  console.log(newUser.passwordErrorMatch);
-
   const registerUser = async () => {
     try {
       const res = await fetch(

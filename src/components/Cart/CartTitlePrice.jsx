@@ -5,7 +5,7 @@ const CartTitlePrice = ({ cartProduct, product, formatPrice }) => {
     <div>
       <TitleTwo
         title={product.product_name}
-        textSize="-mb-0 text-primary-500"
+        textSize="-mb-1 text-primary-500"
       />
       <p>
         $

@@ -1,6 +1,6 @@
 const CartImage = ({ product }) => {
   return (
-    <div className="h-16 w-16 rounded-md bg-dark-200">
+    <div className="flex h-16 w-16 items-center justify-center rounded-md">
       <img
         src={product.image_url}
         alt={product.product_name}

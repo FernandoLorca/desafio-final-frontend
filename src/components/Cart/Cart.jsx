@@ -4,8 +4,6 @@ import CartQuantityPrice from './CartQuantityPrice';
 import ButtonCta from '../Buttons/ButtonCta';
 
 const Cart = ({ cartProduct, formatPrice }) => {
-  console.log(cartProduct);
-
   const emptyCartMessage =
     'Tu carro se encuentra vacio, debes agregar productos para visualizarlos';
   const isCartEmpty =
