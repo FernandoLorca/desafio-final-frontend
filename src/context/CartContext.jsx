@@ -1,20 +1,74 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+
+import { AuthContext } from './AuthContext';
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [productBuy, setProductBuy] = useState();
+  const { token } = useContext(AuthContext);
+  const [cartProduct, setCartProduct] = useState([]);
+  const [virtualQuantity, setVirtualQuantity] = useState(null);
+  const [emptyCart, setEmptyCart] = useState(false);
+  const [cartProductCount, setCartProductCount] = useState(0);
 
-  // Cuando hago click en el onclick del boton comprar de productpage.jsx no guardo el producto en un estado, si no que envio el producto al back y hago un get para despues mostrar el producto en el carrito a travez del context
-  console.log(productBuy);
+  const cartData = async () => {
+    try {
+      const data = await fetch(import.meta.env.VITE_API_URL + '/cart/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (data.status === 200) {
+        setEmptyCart(true);
+        const cart = await data.json();
+        setCartProduct(cart);
+        setCartProductCount(cart.product.length);
+      } else if (data.status === 404) {
+        setCartProduct([]);
+        setCartProductCount(0);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  /*
-  1. Enviar token
-  put /cart/
-  */
+  const buyHandler = async () => {
+    try {
+      await fetch(import.meta.env.VITE_API_URL + '/cart/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        // body: JSON.stringify({
+        //   product: [
+        //     {
+        //       product_id: product.id,
+        //       quantity: 1,
+        //     },
+        //   ],
+        // }),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <CartContext.Provider value={{ setProductBuy }}>
+    <CartContext.Provider
+      value={{
+        cartProduct,
+        setCartProduct,
+        virtualQuantity,
+        setVirtualQuantity,
+        cartData,
+        buyHandler,
+        emptyCart,
+        cartProductCount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -25,7 +25,6 @@ const ProductsPerCategory = ({ products, category }) => {
     fetchDetailedProducts();
   }, [products]);
 
-  console.log(detailedProducts);
   return detailedProducts.map((product, i) => (
     <div key={i}>
       <ProductPerCategory

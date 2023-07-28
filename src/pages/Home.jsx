@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import AuthProvider from '../context/AuthContext';
 
 import Hero from '../components/Hero/Hero';

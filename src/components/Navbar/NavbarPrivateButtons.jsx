@@ -1,5 +1,8 @@
 import { BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+
+import { CartContext } from '../../context/CartContext';
 
 const NavbarPrivateButtons = ({ user }) => {
   let userId;
@@ -8,14 +11,14 @@ const NavbarPrivateButtons = ({ user }) => {
   return (
     <div className="flex gap-10 lg:gap-5">
       <Link
-        to="/carrito"
+        to="/carro"
         className="flex items-center gap-2 hover:opacity-80"
       >
         <div className="flex h-12 w-12 items-center justify-center text-4xl lg:h-8 lg:w-8 lg:text-2xl">
           <BsFillCartFill />
         </div>
         <div className="flex h-5 w-5 items-center justify-center rounded-full bg-dark-100 text-sm text-dark-800">
-          <p>3</p>
+          <p>0</p>
         </div>
       </Link>
       <div className="flex items-center">

@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
+import AuthProvider from './context/AuthContext';
 import ProductsProvider from './context/ProductsContext';
 import CartProvider from './context/CartContext';
 
@@ -11,7 +12,7 @@ import CategoryOfProduct from './pages/CategoryOfProduct';
 import ProductPage from './pages/ProductPage';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
-import Cart from './pages/Cart';
+import CartPage from './pages/CartPage';
 
 const App = () => {
   return (
@@ -39,11 +40,13 @@ const App = () => {
       <Route
         path="/category/:category/:id"
         element={
-          <ProductsProvider>
-            <CartProvider>
-              <ProductPage />
-            </CartProvider>
-          </ProductsProvider>
+          <AuthProvider>
+            <ProductsProvider>
+              <CartProvider>
+                <ProductPage />
+              </CartProvider>
+            </ProductsProvider>
+          </AuthProvider>
         }
       />
       <Route
@@ -51,10 +54,10 @@ const App = () => {
         element={<Profile />}
       />
       <Route
-        path="/carrito"
+        path="/carro"
         element={
           <CartProvider>
-            <Cart />
+            <CartPage />
           </CartProvider>
         }
       />

@@ -11,7 +11,7 @@ import TitleOne from '../components/Titles/TitleOne';
 const Login = () => {
   const navigate = useNavigate();
   const { token, saveToken, user } = useContext(AuthContext);
-  const [email, setEmail] = useState('test2@gmail.com');
+  const [email, setEmail] = useState('prueba@prueba.com');
   const [password, setPassword] = useState('12345678');
 
   useEffect(() => {
