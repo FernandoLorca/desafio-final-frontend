@@ -8,6 +8,7 @@ const ProductsProvider = ({ children }) => {
   const [category, setCategory] = useState('');
   const [product, setProduct] = useState([]);
   const [productId, setProductId] = useState(null);
+  const [loader, setLoader] = useState(false);
 
   switch (category) {
     case 'ssd-y-hdd':
@@ -22,12 +23,14 @@ const ProductsProvider = ({ children }) => {
   }
 
   const getProductsData = async () => {
+    setLoader(true);
     try {
       if (category && [category].length > 0) {
         const res = await fetch(
           import.meta.env.VITE_API_URL +
             `/products/category/${category}?limit=40`
         );
+        res.status === 200 && setLoader(false);
         const data = await res.json();
         setProducts(data);
       }
@@ -62,7 +65,7 @@ const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ products, setCategory, category, product, setProductId }}
+      value={{ products, setCategory, category, product, setProductId, loader }}
     >
       {children}
     </ProductsContext.Provider>

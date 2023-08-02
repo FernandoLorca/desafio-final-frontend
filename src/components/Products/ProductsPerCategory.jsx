@@ -1,11 +1,13 @@
 import { useEffect, useState, useContext } from 'react';
 
 import { CartContext } from '../../context/CartContext';
+import { ProductsContext } from '../../context/ProductsContext';
 
 import ProductPerCategory from './ProductPerCategory';
 
 const ProductsPerCategory = ({ products, category }) => {
   const { setProductBuy } = useContext(CartContext);
+  const { loader } = useContext(ProductsContext);
   const [detailedProducts, setDetailedProducts] = useState([]);
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const ProductsPerCategory = ({ products, category }) => {
         img={product.image_url}
         id={product.id}
         category={category}
+        loader={loader}
         addToCart={() => setProductBuy(product)}
       />
     </div>
