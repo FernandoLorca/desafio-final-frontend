@@ -14,9 +14,9 @@ const NavbarPrivateButtons = ({ user }) => {
         <div className="flex h-12 w-12 items-center justify-center text-4xl lg:h-8 lg:w-8 lg:text-2xl">
           <BsFillCartFill />
         </div>
-        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-dark-100 text-sm text-dark-800">
+        {/* <div className="flex h-5 w-5 items-center justify-center rounded-full bg-dark-100 text-sm text-dark-800">
           <p>0</p>
-        </div>
+        </div> */}
       </Link>
       <div className="flex items-center">
         <div className="hover:text-primary-500 hover:underline">
