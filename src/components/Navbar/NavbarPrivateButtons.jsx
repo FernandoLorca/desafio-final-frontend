@@ -1,8 +1,5 @@
 import { BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-
-import { CartContext } from '../../context/CartContext';
 
 const NavbarPrivateButtons = ({ user }) => {
   let userId;

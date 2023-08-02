@@ -4,13 +4,11 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 import NavbarPrivateButtons from '../Navbar/NavbarPrivateButtons';
-import NavbarPublicButtons from '../Navbar/NavbarPrivateButtons';
+import NavbarPublicButtons from '../Navbar/NavbarPublicButtons';
 
 import Logo from '../Logo';
 import Link from '../Buttons/ButtonLink';
 import Rrss from '../Rrss';
-import ButtonPassive from '../Buttons/ButtonPassive';
-import ButtonCta from '../Buttons/ButtonCta';
 
 const Footer = () => {
   const { user } = useContext(AuthContext);
@@ -25,8 +23,8 @@ const Footer = () => {
       </div>
       <div className="pb-5 text-center">
         <div className="flex justify-center gap-5 py-5 md:gap-3">
-          {user && [user].length > 0 ? (
-            <NavbarPrivateButtons />
+          {user && user.status !== 500 && [user].length > 0 ? (
+            <NavbarPrivateButtons user={user} />
           ) : (
             <NavbarPublicButtons />
           )}
