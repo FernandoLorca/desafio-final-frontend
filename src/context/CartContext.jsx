@@ -9,6 +9,7 @@ const CartProvider = ({ children }) => {
   const [cartProduct, setCartProduct] = useState([]);
   const [virtualQuantity, setVirtualQuantity] = useState(null);
   const [emptyCart, setEmptyCart] = useState(false);
+  const [cartProductCount, setCartProductCount] = useState(0);
 
   const cartData = async () => {
     try {
@@ -23,8 +24,10 @@ const CartProvider = ({ children }) => {
         setEmptyCart(true);
         const cart = await data.json();
         setCartProduct(cart);
+        setCartProductCount(cart.product.length);
       } else if (data.status === 404) {
         setCartProduct([]);
+        setCartProductCount(0);
       }
     } catch (error) {
       console.error(error);
@@ -63,6 +66,7 @@ const CartProvider = ({ children }) => {
         cartData,
         buyHandler,
         emptyCart,
+        cartProductCount,
       }}
     >
       {children}
