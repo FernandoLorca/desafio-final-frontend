@@ -16,6 +16,7 @@ const Hero = ({
   displayButton = 'block',
 }) => {
   const { token, getUser, user } = useContext(AuthContext);
+
   const [menu, setMenu] = useState(false);
 
   useEffect(() => {

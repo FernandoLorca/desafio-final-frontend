@@ -13,9 +13,9 @@ const Login = () => {
   const { token, saveToken, user } = useContext(AuthContext);
   const [email, setEmail] = useState('prueba@prueba.com');
   const [password, setPassword] = useState('12345678');
-
+ 
   useEffect(() => {
-    if (token && user && user.status !== 500) {
+    if (token && user && user.status  !== 500) {
       navigate('/');
     }
   }, [token, user, navigate]);
@@ -34,6 +34,7 @@ const Login = () => {
       });
       const { token } = await res.json();
       saveToken(token);
+     
     } catch (error) {
       console.error(error);
     }
@@ -42,6 +43,7 @@ const Login = () => {
   const formHandler = async e => {
     e.preventDefault();
     await getToken();
+    window.location.reload();
   };
 
   return (

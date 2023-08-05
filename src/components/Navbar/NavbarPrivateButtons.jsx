@@ -1,9 +1,22 @@
 import { BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
+import { useContext } from 'react';
+import AuthProvider, { AuthContext } from '../../context/AuthContext';
+
 const NavbarPrivateButtons = ({ user }) => {
   let userId;
   user && [user].length > 0 ? (userId = user.id) : null;
+
+  const { logOut } = useContext(AuthContext)
+
+ 
+  const handleLogout = () =>{
+    localStorage.clear();
+    window.location.reload();
+    window.location.href("/")
+  }
+
 
   return (
     <div className="flex gap-10 lg:gap-5">
@@ -18,10 +31,16 @@ const NavbarPrivateButtons = ({ user }) => {
           <p>0</p>
         </div> */}
       </Link>
-      <div className="flex items-center">
+      <div className="flex items-center gap-x-3">
         <div className="hover:text-primary-500 hover:underline">
           <Link to={`/perfil/${user && [user].length > 0 && userId}`}>
             Mi perfil
+          </Link>
+        </div>
+        <div className="hover:text-primary-500 hover:underline">
+          {/* GENERAR EL LOGOUT */}
+          <Link to="/" onClick={handleLogout}>
+            Logout
           </Link>
         </div>
       </div>
