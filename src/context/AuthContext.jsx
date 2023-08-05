@@ -43,6 +43,8 @@ const AuthProvider = ({ children }) => {
     setToken(null);
     setUser(null);
     localStorage.removeItem('token');
+    window.location.reload();
+    window.location.href("/")
   };
 
   return (

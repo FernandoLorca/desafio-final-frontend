@@ -2,7 +2,7 @@ import { BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 import { useContext } from 'react';
-import AuthProvider, { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const NavbarPrivateButtons = ({ user }) => {
   let userId;
@@ -10,12 +10,6 @@ const NavbarPrivateButtons = ({ user }) => {
 
   const { logOut } = useContext(AuthContext)
 
- 
-  const handleLogout = () =>{
-    localStorage.clear();
-    window.location.reload();
-    window.location.href("/")
-  }
 
 
   return (
@@ -38,8 +32,7 @@ const NavbarPrivateButtons = ({ user }) => {
           </Link>
         </div>
         <div className="hover:text-primary-500 hover:underline">
-          {/* GENERAR EL LOGOUT */}
-          <Link to="/" onClick={handleLogout}>
+          <Link to="/" onClick={logOut}>
             Logout
           </Link>
         </div>
