@@ -41,6 +41,9 @@ const Cart = ({ cartProduct, formatPrice }) => {
           </div>
         ))
       )}
+      <div>
+        <p>TOTAL: ${cartProduct.total_price}</p>
+      </div>
       <div
         className={`mt-5 ${
           cartProduct.result !== emptyCartMessage ? 'block' : 'hidden'
@@ -53,3 +56,4 @@ const Cart = ({ cartProduct, formatPrice }) => {
 };
 
 export default Cart;
+

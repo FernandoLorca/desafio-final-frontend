@@ -66,7 +66,7 @@ const CartProvider = ({ children }) => {
         cartData,
         buyHandler,
         emptyCart,
-        cartProductCount,
+        cartProductCount
       }}
     >
       {children}

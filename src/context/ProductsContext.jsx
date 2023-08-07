@@ -59,13 +59,29 @@ const ProductsProvider = ({ children }) => {
     }
   };
 
+  const getProduct = async (product_id) => {
+    try {
+      if (product_id) {
+        const res = await fetch(
+          import.meta.env.VITE_API_URL + `/products/${product_id}`
+        );
+
+        const data = await res.json();
+        return data;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
   useEffect(() => {
     getProductData();
   }, [productId]);
 
   return (
     <ProductsContext.Provider
-      value={{ products, setCategory, category, product, setProductId, loader }}
+      value={{ products, setCategory, category, product, setProductId, productId, loader, getProduct }}
     >
       {children}
     </ProductsContext.Provider>

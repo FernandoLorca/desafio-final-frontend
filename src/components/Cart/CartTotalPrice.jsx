@@ -7,7 +7,7 @@ const CartTotalPrice = ({ cartProduct, product, formatPrice }) => {
         {cartProduct &&
           typeof cartProduct === 'object' &&
           cartProduct !== null &&
-          formatPrice(product.price_x_quantity * product.product_quantity)}
+          formatPrice(product.price_x_quantity)}
       </p>
     </div>
   );

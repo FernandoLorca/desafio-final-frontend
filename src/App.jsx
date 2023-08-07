@@ -56,9 +56,11 @@ const App = () => {
       <Route
         path="/carro"
         element={
-          <CartProvider>
-            <CartPage />
-          </CartProvider>
+          <ProductsProvider>
+            <CartProvider>
+              <CartPage />
+            </CartProvider>
+          </ProductsProvider>
         }
       />
       <Route
