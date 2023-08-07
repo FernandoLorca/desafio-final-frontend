@@ -1,12 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from '../../context/ProductsContext';
 import TitleTwo from '../Titles/TitleTwo';
 
-const CartTitlePrice = ({ cartProduct, product, formatPrice}) => {
-
+const CartTitlePrice = ({ cartProduct, product, formatPrice }) => {
   const { getProduct } = useContext(ProductsContext);
-  const [ productName, setProductName ] = useState();
-  const [ productPrice, setProductPrice ] = useState();
+  const [productName, setProductName] = useState();
+  const [productPrice, setProductPrice] = useState();
 
   const getProductName = async () => {
     const productServ = await getProduct(product.product_id);
@@ -16,7 +16,7 @@ const CartTitlePrice = ({ cartProduct, product, formatPrice}) => {
 
   useEffect(() => {
     getProductName();
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -24,9 +24,7 @@ const CartTitlePrice = ({ cartProduct, product, formatPrice}) => {
         title={productName}
         textSize="-mb-1 text-primary-500"
       />
-      <p>$
-        {productPrice && formatPrice(productPrice)}
-      </p>
+      <p>${productPrice && formatPrice(productPrice)}</p>
     </div>
   );
 };

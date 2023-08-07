@@ -4,7 +4,6 @@ import ProductPrice from './ProductPrice';
 import './ProductPerCategory.css';
 
 const ProductPerCategory = ({ title, price, img, id, category, loader }) => {
-  console.log(loader);
   return (
     <div className="grid h-full content-around justify-items-center">
       <div className="mb-2 flex max-h-[10rem] min-h-[10rem] w-full max-w-[10rem] items-center justify-center rounded-xl border-2 border-dark-100 p-6">

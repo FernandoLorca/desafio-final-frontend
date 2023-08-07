@@ -12,6 +12,8 @@ const Cart = ({ cartProduct, formatPrice }) => {
     !cartProduct.product ||
     cartProduct.result === emptyCartMessage;
 
+  console.log(cartProduct);
+
   return (
     <div className="flex flex-col gap-5">
       {isCartEmpty ? (
@@ -41,14 +43,17 @@ const Cart = ({ cartProduct, formatPrice }) => {
           </div>
         ))
       )}
-      <div>
-        <p>TOTAL: ${cartProduct.total_price}</p>
-      </div>
       <div
-        className={`mt-5 ${
-          cartProduct.result !== emptyCartMessage ? 'block' : 'hidden'
+        className={`text-center text-xl font-bold ${
+          cartProduct.total_price ? 'block' : 'hidden'
         }`}
       >
+        <p>
+          TOTAL: $
+          {cartProduct.total_price && formatPrice(cartProduct.total_price)}
+        </p>
+      </div>
+      <div className={`${cartProduct.total_price ? 'block' : 'hidden'}`}>
         <ButtonCta text="Finalizar Compra" />
       </div>
     </div>
@@ -56,4 +61,3 @@ const Cart = ({ cartProduct, formatPrice }) => {
 };
 
 export default Cart;
-
