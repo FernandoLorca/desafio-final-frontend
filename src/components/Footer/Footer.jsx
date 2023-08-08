@@ -21,7 +21,7 @@ const Footer = () => {
           fontSize="text-2xl lg:text-xl"
         />
       </div>
-      <div className="pb-5 text-center">
+      <div className="text-center">
         <div className="flex justify-center gap-5 py-5 md:gap-3">
           {user && user.status !== 500 && [user].length > 0 ? (
             <NavbarPrivateButtons user={user} />
@@ -29,43 +29,6 @@ const Footer = () => {
             <NavbarPublicButtons />
           )}
         </div>
-      </div>
-      <div className="flex flex-col gap-5 text-center md:flex-row">
-        <Link
-          text="Placas madre"
-          href="#"
-          fontSize="text-sm"
-        />
-        <Link
-          text="Ram"
-          href="#"
-          fontSize="text-sm"
-        />
-        <Link
-          text="Ssd y Hdd"
-          href="#"
-          fontSize="text-sm"
-        />
-        <Link
-          text="Gabinetes"
-          href="#"
-          fontSize="text-sm"
-        />
-        <Link
-          text="Fuentes de poder"
-          href="#"
-          fontSize="text-sm"
-        />
-        <Link
-          text="Tarjetas de video"
-          href="#"
-          fontSize="text-sm"
-        />
-        <Link
-          text="Procesadores"
-          href="#"
-          fontSize="text-sm"
-        />
       </div>
       <div className="flex justify-center gap-7 pb-5 pt-10 lg:pt-5">
         <Rrss icon={<BsInstagram />} />

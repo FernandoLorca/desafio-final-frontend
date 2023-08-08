@@ -56,7 +56,11 @@ const Hero = ({
               subTitle={heroSubTitle}
             />
           </div>
-          <div className="block w-full md:w-1/3 lg:w-1/5">
+          <div
+            className={`block w-full md:w-1/3 lg:w-1/5 ${
+              token ? 'hidden' : 'block'
+            }`}
+          >
             <Link to="/register">
               <ButtonCta
                 text="Registrate"

@@ -14,7 +14,7 @@ const Profile = () => {
   const [inputValues, setInputValues] = useState({
     first_name: '',
     last_name: '',
-    phone: '',
+    phone: '+569',
   });
   const [editName, setEditName] = useState(false);
   const [editLastName, setEditLastName] = useState(false);
@@ -155,7 +155,7 @@ const Profile = () => {
                 <input
                   type="text"
                   className="w-full rounded border border-dark-300 py-1 pl-2 text-sm"
-                  placeholder="Escribe tu nombre"
+                  placeholder="Escribe tu apellido"
                   onChange={e =>
                     setInputValues({
                       ...inputValues,
@@ -199,7 +199,7 @@ const Profile = () => {
                 <input
                   type="text"
                   className="w-full rounded border border-dark-300 py-1 pl-2 text-sm"
-                  placeholder="Escribe tu nombre"
+                  placeholder="Escribe tu teléfono"
                   onChange={e =>
                     setInputValues({
                       ...inputValues,
@@ -214,7 +214,7 @@ const Profile = () => {
                     editProfile();
                     getUser();
                     setEditPhone(false);
-                    setInputValues({ ...inputValues, phone: '' });
+                    setInputValues({ ...inputValues, phone: '+569' });
                   }}
                 />
               </div>
