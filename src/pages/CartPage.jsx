@@ -55,7 +55,6 @@ const CartPage = () => {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 };
