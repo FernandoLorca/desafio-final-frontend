@@ -11,7 +11,6 @@ import NotFound from './pages/NotFound';
 import CategoryOfProduct from './pages/CategoryOfProduct';
 import ProductPage from './pages/ProductPage';
 import Profile from './pages/Profile';
-import ProfileEdit from './pages/ProfileEdit';
 import CartPage from './pages/CartPage';
 
 const App = () => {
@@ -62,10 +61,6 @@ const App = () => {
             </CartProvider>
           </ProductsProvider>
         }
-      />
-      <Route
-        path="/perfil/:id/editar-perfil"
-        element={<ProfileEdit />}
       />
       <Route
         path="*"
