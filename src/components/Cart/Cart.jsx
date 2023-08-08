@@ -12,8 +12,6 @@ const Cart = ({ cartProduct, formatPrice }) => {
     !cartProduct.product ||
     cartProduct.result === emptyCartMessage;
 
-  console.log(cartProduct);
-
   return (
     <div className="flex flex-col gap-5">
       {isCartEmpty ? (
@@ -54,7 +52,10 @@ const Cart = ({ cartProduct, formatPrice }) => {
         </p>
       </div>
       <div className={`${cartProduct.total_price ? 'block' : 'hidden'}`}>
-        <ButtonCta text="Finalizar Compra" />
+        <ButtonCta
+          text="Finalizar Compraa"
+          customStyle="cursor-not-allowed"
+        />
       </div>
     </div>
   );

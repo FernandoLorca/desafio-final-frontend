@@ -39,7 +39,7 @@ const CartPage = () => {
   return (
     <>
       <NavbarMain user={user} />
-      <div className="flex h-screen justify-center">
+      <div className="flex justify-center">
         <div className="m-5 flex h-fit w-full flex-grow flex-col gap-5 rounded-xl border-2 border-dark-100 p-5 md:mx-16 lg:max-w-lg">
           {!emptyCart ? (
             <div className="flex flex-col items-center justify-center gap-5">
