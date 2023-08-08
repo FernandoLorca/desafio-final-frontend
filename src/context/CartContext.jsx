@@ -42,14 +42,6 @@ const CartProvider = ({ children }) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        // body: JSON.stringify({
-        //   product: [
-        //     {
-        //       product_id: product.id,
-        //       quantity: 1,
-        //     },
-        //   ],
-        // }),
       });
     } catch (error) {
       console.error(error);
@@ -66,7 +58,7 @@ const CartProvider = ({ children }) => {
         cartData,
         buyHandler,
         emptyCart,
-        cartProductCount
+        cartProductCount,
       }}
     >
       {children}
